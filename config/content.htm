@@ -1,1 +1,35 @@
-<h1>About</h1><p>This is <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a></p><p>目前的 cmsimde 在編輯器下方新增一個 csave 按鈕, 意即 collabrative save, 當動態網際管理系統在多人同時維護登入維護網頁內容時, 編輯各頁面時段, 該頁面可能已經改版, 因此使用 csave 按鈕存檔時, 會導入當下最新的該頁面內容, 並試圖與編輯中的頁面內容進行合併.</p><p>使用 csave 按鈕存檔無法刪除頁面資料.</p><p>使用 Edit All 模式, 無法使用 csave 按鈕（尚未測試).</p><p></p><p></p>
+<h1>About</h1>
+<p>This is <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a></p>
+<p>目前的 cmsimde 在編輯器下方新增一個 csave 按鈕, 意即 collabrative save, 當動態網際管理系統在多人同時維護登入維護網頁內容時, 編輯各頁面時段, 該頁面可能已經改版, 因此使用 csave 按鈕存檔時, 會導入當下最新的該頁面內容, 並試圖與編輯中的頁面內容進行合併.</p>
+<p>使用 csave 按鈕存檔無法刪除頁面資料.</p>
+<p>使用 Edit All 模式, 無法使用 csave 按鈕（尚未測試).</p>
+<h1>Week 1</h1>
+<h2>Create New repository and Wecsite</h2>
+<p><strong>step1. Download protable system<br/></strong></p>
+<p><strong> </strong><span>Go to</span><strong> <a href="https://github.com/mdecourse/cd2021/discussions/7">2021 可攜程式系統</a></strong></p>
+<p><span>First download the </span><strong><a href="https://drive.google.com/file/d/1R6vAAWdNDigmyvFFQTKyM-XNKOWeCFJU/view?usp=sharing" rel="nofollow">下載 kmol2021_spring_v2.7z</a></strong> compressed file<span>, and extract the file to the flash drive.</span></p>
+<p><span><strong>step2.</strong></span></p>
+<p>Set <strong>.gitconfig</strong> and save this file in the "home" directory</p>
+<p><img alt="" height="100" src="/images/gitconfit.png" width="350"/></p>
+<p><span><strong>step3. Use cmstemplate <br/></strong></span></p>
+<p><span>Go to <strong><a href="https://github.com/mdecourse/cmstemplate">mdecourse / cmstemplate</a></strong></span></p>
+<p>Click <strong>Use the template</strong></p>
+<p><img alt="" height="1041" src="/images/cmstemplate click.png" width="1920"/></p>
+<p>Repository name:cd2021</p>
+<p>Click <strong>Create new repository from template</strong></p>
+<p><img alt="" height="607" src="/images/create new repository.png" width="856"/></p>
+<p><span><strong>step4. G<i>it clone</i></strong></span></p>
+<p>Go to the github website git clone the URL of your own storage</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/40823145/cd2021.git</pre>
+<p><img alt="" height="638" src="/images/clone submould.png" width="1223"/></p>
+<p><strong>Upgrade pip and install plugins</strong></p>
+<p><span><strong>step5. Github pages<br/></strong></span></p>
+<p><span><strong><img alt="" height="747" src="/images/github pages.png" width="1042"/></strong></span></p>
+<p>Restart protable system,input in cmd</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">cd tmp
+cd cd2021
+cd cmsimde
+python wsgi.py</pre>
+<p>Search <strong><a href="/">https://localhost:9443/</a></strong> in the browser</p>
+<p>tip:http"s"</p>
+<p><img alt="" height="1080" src="/images/website localhost.png" width="1920"/></p>
