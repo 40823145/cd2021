@@ -56,7 +56,9 @@
 <v t="leo.20170710022041.1"><vh>@path markdown</vh>
 <v t="leo.20180115115910.1"><vh>2020</vh>
 <v t="leo.20180423103639.1"><vh>2020 Fall CP 課程</vh>
-<v t="leo.20180423103656.1"><vh>@edit 20200813.md</vh></v>
+<v t="leo.20180423103656.1"><vh>@clean 20210813.md</vh>
+<v t="leo.20210303155802.1"><vh>newHeadline</vh></v>
+</v>
 </v>
 </v>
 </v>
@@ -88,6 +90,39 @@ g.es("admin pelican Github 執行完畢")
 <t tx="leo.20180115093726.1"></t>
 <t tx="leo.20180115115910.1"></t>
 <t tx="leo.20180423103639.1"></t>
+<t tx="leo.20180423103656.1">@language md
+---
+Title: 2020 Fall CP 課程
+Date: 2020-08-13 11:00
+Category: Misc
+Tags: 2020FallCP
+Slug: 2020-Fall-Intro-to-computer-programming
+Author: yen
+---
+
+2020 Fall 計算機程式的教學主要介紹 Python 與 Flutter 在機械設計流程中的應用.
+
+&lt;!-- PELICAN_END_SUMMARY --&gt;
+
+@others
+</t>
+<t tx="leo.20210303155802.1">Python
+----
+Python 可以用來開發單機版的視窗程式套件 Pyslvs-UI
+
+Python 可以用來開發網際版的內容管理系統 CMSiMDE
+
+Python 可以用來控制 CoppeliaSim 與 Webots 虛擬環境中的機電系統
+
+Python 可以用於機器學習 Keras, Pytorch
+
+
+Flutter
+----
+
+Flutter 可以用來開發跨 Apple 與 Android 手機與平板上的 Apps
+
+@others</t>
 <t tx="yen.20170108171605.1"></t>
 <t tx="yen.20170108171605.2">QTreeWidget {
     /* These apply to the selected item, but not to editing items.*/
