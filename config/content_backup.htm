@@ -33,7 +33,22 @@ python wsgi.py</pre>
 <p>Search <strong><a href="/">https://localhost:9443/</a></strong> in the browser</p>
 <p>tip:http"s"</p>
 <p><img alt="" height="1080" src="/images/website localhost.png" width="1920"/></p>
-<h1>Upgrade pip and install plugins</h1>
+<h1>Week 2</h1>
+<p><strong>分組亂數排序(失敗)</strong></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import random
+import requests
+from bs4 import BeautifulSoup
+
+response = requests.get(
+    "https://ethercalc.net/awlfom9374eg_rqqa77ezdfrl/app")
+soup = BeautifulSoup(response.text, "html.parser")
+result = soup.find("tr","td")
+#random.shuffle(result)
+print(result)
+
+
+</pre>
+<h1>Week 3</h1><h1>Upgrade pip and install plugins</h1>
 <p>Install plugins(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
 </pre>
@@ -81,3 +96,4 @@ leo
 <p>Modify markdown<img alt="" height="1080" src="/images/clean.png" width="1920"/></p>
 <p><img alt="" height="1080" src="/images/newheadline.png" width="1920"/></p>
 <h2>Reveal</h2>
+<p><img alt="" height="1080" src="/images/reveal.png" width="1920"/></p>
