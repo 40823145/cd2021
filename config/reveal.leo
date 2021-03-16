@@ -27,6 +27,7 @@
 <v t="leo.20210315200113.1"><vh>slide 2-5</vh></v>
 <v t="leo.20210315195445.1"><vh>slide 2-6</vh></v>
 <v t="leo.20210315195551.1"><vh>slide 2-7</vh></v>
+<v t="leo.20210316231238.1"><vh>slide 2-8</vh></v>
 </v>
 <v t="leo.20200818170636.1"><vh>slide3</vh>
 <v t="leo.20200818170909.1"><vh>slide 3-1</vh></v>
@@ -39,6 +40,10 @@
 <v t="leo.20210315212419.1"><vh>slide 4-3</vh></v>
 <v t="leo.20210315212858.1"><vh>slide 4-4</vh></v>
 <v t="leo.20210316222114.1"><vh>slide 4-5</vh></v>
+</v>
+<v t="leo.20210316225651.1"><vh>slide 5</vh>
+<v t="leo.20210316225714.1"><vh>slide 5-1</vh></v>
+<v t="leo.20210316230354.1"><vh>slide 5-2</vh></v>
 </v>
 </v>
 </v>
@@ -292,6 +297,18 @@ vertical: body pane on the botton</t>
 <t tx="leo.20210316223321.1">&lt;section&gt;
     &lt;h2&gt;Webots基本Python避障程式&lt;/h2&gt;
     &lt;p&gt;&lt;img src="https://github.com/40823145/cd2021/blob/main/images/webots%20car%20avoid.png?raw=true"" alt="" width="500" height="250"&gt;&lt;/p&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20210316225651.1">&lt;section&gt;
+    @others
+&lt;/section&gt;</t>
+<t tx="leo.20210316225714.1">&lt;section&gt;
+&lt;h4&gt;Lego-EV3產品設計報告書&lt;/h4&gt;
+ &lt;p&gt;&lt;iframe src="https://drive.google.com/file/d/1VTZRCIs_ifjLimdZAVUOUr5o4abNILUg/preview" width="550" height="620"&gt;&lt;/iframe&gt;&lt;/p&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20210316230354.1">&lt;section  data-background="#99DD00" data-background-transition="zoom" class="has-light-background present" style="top: 0px; display: block;"&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20210316231238.1">&lt;section&gt;
+&lt;script src="https://embed.github.com/view/3d/40823108/cd2021/blob/main/EV3-Ontology-1.0.stl"&gt;&lt;/script&gt;
 &lt;/section&gt;</t>
 </tnodes>
 </leo_file>
