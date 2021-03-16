@@ -308,7 +308,7 @@ vertical: body pane on the botton</t>
 <t tx="leo.20210316230354.1">&lt;section  data-background="#99DD00" data-background-transition="zoom" class="has-light-background present" style="top: 0px; display: block;"&gt;
 &lt;/section&gt;</t>
 <t tx="leo.20210316231238.1">&lt;section&gt;
-&lt;script src="https://embed.github.com/view/3d/40823108/cd2021/blob/main/EV3-Ontology-1.0.stl"&gt;&lt;/script&gt;
+&lt;script src="https://embed.github.com/view/3d/40823108/cd2021/main/EV3-Ontology-1.0.stl"&gt;&lt;/script&gt;
 &lt;/section&gt;</t>
 </tnodes>
 </leo_file>
