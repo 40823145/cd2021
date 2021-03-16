@@ -33,7 +33,13 @@
 <v t="leo.20200818170953.1"><vh>slide 3-2</vh></v>
 <v t="leo.20200818171010.1"><vh>slide 3-3</vh></v>
 </v>
-<v t="leo.20200818170725.1"><vh>slide 4</vh></v>
+<v t="leo.20200818170725.1"><vh>slide 4</vh>
+<v t="leo.20210315205958.1"><vh>slide 4-1</vh></v>
+<v t="leo.20210316223321.1"><vh>slide 4-2</vh></v>
+<v t="leo.20210315212419.1"><vh>slide 4-3</vh></v>
+<v t="leo.20210315212858.1"><vh>slide 4-4</vh></v>
+<v t="leo.20210316222114.1"><vh>slide 4-5</vh></v>
+</v>
 </v>
 </v>
 </v>
@@ -207,32 +213,24 @@ vertical: body pane on the botton</t>
 &lt;/section&gt;
 
 </t>
-<t tx="leo.20200818170636.1">&lt;!-- Example of nested vertical slides --&gt;
-&lt;section&gt;
+<t tx="leo.20200818170636.1">&lt;section&gt;
     @others
-&lt;/section&gt;
-
-</t>
+&lt;/section&gt;</t>
 <t tx="leo.20200818170725.1">&lt;section&gt;
-    &lt;h2&gt;Slides&lt;/h2&gt;
-    &lt;p&gt;
-        Not a coder? Not a problem. There's a fully-featured visual editor for authoring these, try it out at &lt;a href="https://slides.com" target="_blank"&gt;https://slides.com&lt;/a&gt;.
-    &lt;/p&gt;
-&lt;/section&gt;
-
-</t>
+    @others
+&lt;/section&gt;</t>
 <t tx="leo.20200818170909.1">&lt;section&gt;
     &lt;h1&gt;W3進度&lt;/h1&gt;
 &lt;/section&gt;
 </t>
 <t tx="leo.20200818170953.1">&lt;section&gt;
     &lt;h2&gt;Webots基本操作&lt;/h2&gt;
-    &lt;p&gt;&lt;img src="https://github.com/40823145/cd2021/blob/main/images/webots%20car.png?raw=true"" alt="" width="1000" height="500"&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;img src="https://github.com/40823145/cd2021/blob/main/images/webots%20car.png?raw=true"" alt="" width="500" height="250"&gt;&lt;/p&gt;
 &lt;/section&gt;
 </t>
 <t tx="leo.20200818171010.1">&lt;section&gt;
     &lt;h2&gt;基礎小車&lt;/h2&gt;
-    &lt;iframe width="1000" height="500" src="https://www.youtube.com/embed/03QbjQsOLUE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+    &lt;iframe width="500" height="250" src="https://www.youtube.com/embed/03QbjQsOLUE" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 &lt;/section&gt;</t>
 <t tx="leo.20210315193519.1">&lt;section&gt;
         &lt;h1&gt;W2進度&lt;/h1&gt;
@@ -240,28 +238,28 @@ vertical: body pane on the botton</t>
 <t tx="leo.20210315194520.1">&lt;section&gt;
         &lt;h2&gt;主題&lt;/h2&gt;
         &lt;small&gt;&lt;p&gt;分組後與組員討論決定製作機械手臂夾爪，下圖為設計之概念圖。&lt;/p&gt;&lt;/small&gt;
-        &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/midterm-1.jpg?raw=true" alt="" width="1000" height="500"&gt;&lt;/p&gt;       
+        &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/midterm-1.jpg?raw=true" alt="" width="500" height="250"&gt;&lt;/p&gt;       
 &lt;/section&gt;</t>
 <t tx="leo.20210315195148.1">&lt;section class="present" style="top: 48px; display: block;"&gt;
                 &lt;h2&gt;主題修改&lt;/h2&gt;
                  &lt;small&gt;&lt;p&gt;經過設計思考機械手臂夾爪過於複雜，模擬上可能無法順利進行，決定更改主題。&lt;/p&gt;&lt;/small&gt; &lt;small&gt;&lt;p&gt;討論後決定製作Lego-EV3可以透過各種不同的連桿組成所需之形狀。&lt;/p&gt;&lt;/small&gt;
-                 &lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-1.JPG?raw=true" alt="" width="1000" height="500"&gt;
+                 &lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-1.JPG?raw=true" alt="" width="500" height="250"&gt;
             &lt;/section&gt;</t>
 <t tx="leo.20210315195324.1">&lt;section class="present" style="top: 63.5px; display: block;"&gt;
                 &lt;h2&gt;理想模型&lt;/h2&gt;
                  &lt;small&gt;&lt;p&gt;下圖為參考Lego-EV3，所繪製之概念圖&lt;/p&gt;&lt;/small&gt;
-                 &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-1.JPG?raw=true" alt="" width="1000" height="500"&gt;&lt;/p&gt;
+                 &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-1.JPG?raw=true" alt="" width="500" height="250"&gt;&lt;/p&gt;
             &lt;/section&gt;</t>
 <t tx="leo.20210315195445.1">&lt;section class="present" style="top: 63.5px; display: block;"&gt;
                 &lt;h2&gt;主機繪製&lt;/h2&gt;
                  &lt;small&gt;&lt;p&gt;下圖為Lego-EV3主機繪製過程圖&lt;/p&gt;&lt;/small&gt;
-                 &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-2.jpg?raw=true" alt="" width="1000" height="500"&gt;&lt;/p&gt;
+                 &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-2.jpg?raw=true" alt="" width="500" height="250"&gt;&lt;/p&gt;
             &lt;/section&gt;
         </t>
 <t tx="leo.20210315195551.1">&lt;section class="present" style="top: 63.5px; display: block;"&gt;
                 &lt;h2&gt;馬達繪製&lt;/h2&gt;
                  &lt;small&gt;&lt;p&gt;下圖為Lego-EV3馬達繪製與主機配合樣圖&lt;/p&gt;&lt;/small&gt;
-                 &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-3.jpg?raw=true" alt="" width="1000" height="500"&gt;&lt;/p&gt;
+                 &lt;p&gt;&lt;img src="https://github.com/40823108/cd2021/blob/main/images/EV3-3.jpg?raw=true" alt="" width="500" height="250"&gt;&lt;/p&gt;
             &lt;/section&gt;</t>
 <t tx="leo.20210315200113.1">&lt;section class="present" style="top: 104px; display: block;"&gt;
                 &lt;h2&gt;Lego-EV3&lt;/h2&gt;
@@ -274,5 +272,26 @@ vertical: body pane on the botton</t>
                         &lt;li&gt;可與iOS/Android/Windows裝置遙控或互動&lt;/li&gt;
                 &lt;/ul&gt;
             &lt;/section&gt;</t>
+<t tx="leo.20210315205958.1">&lt;section&gt;
+    &lt;h1&gt;W4進度&lt;/h1&gt;
+&lt;/section&gt;
+</t>
+<t tx="leo.20210315212419.1">&lt;section&gt;
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/vWNkJMrr3b0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20210315212858.1">&lt;section&gt;
+    &lt;h2&gt;Webots匯入EV3&lt;/h2&gt;
+    &lt;small&gt;&lt;p&gt;將EV3STL黨匯入webots嘗試讓EV3避障&lt;/p&gt;&lt;/small&gt;
+    &lt;p&gt;&lt;img src="https://github.com/40823145/cd2021/blob/main/images/webots%20ev3.png?raw=true"" alt="" width="500" height="250"&gt;&lt;/p&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20210316222114.1">&lt;section&gt;
+    &lt;h2&gt;問題&lt;/h2&gt;
+    &lt;small&gt;&lt;p&gt;將EV3 STL黨匯入webots，全部的零件會變成整塊實體，所以將需要做動的輪胎部分先拆除，在webots中重建，但在webots中重建的輪胎顯示不出來，問題尚在解決當中&lt;/p&gt;&lt;/small&gt;
+    &lt;p&gt;&lt;img src="https://github.com/40823145/cd2021/blob/main/images/wheel%20error.png?raw=true"" alt="" width="500" height="250"&gt;&lt;/p&gt;
+&lt;/section&gt;</t>
+<t tx="leo.20210316223321.1">&lt;section&gt;
+    &lt;h2&gt;Webots基本Python避障程式&lt;/h2&gt;
+    &lt;p&gt;&lt;img src="https://github.com/40823145/cd2021/blob/main/images/webots%20car%20avoid.png?raw=true"" alt="" width="500" height="250"&gt;&lt;/p&gt;
+&lt;/section&gt;</t>
 </tnodes>
 </leo_file>
