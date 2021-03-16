@@ -1,10 +1,6 @@
-<h1>About</h1>
-<p>This is <a href="https://github.com/mdecourse/cmstemplate">https://github.com/mdecourse/cmstemplate</a></p>
-<p>目前的 cmsimde 在編輯器下方新增一個 csave 按鈕, 意即 collabrative save, 當動態網際管理系統在多人同時維護登入維護網頁內容時, 編輯各頁面時段, 該頁面可能已經改版, 因此使用 csave 按鈕存檔時, 會導入當下最新的該頁面內容, 並試圖與編輯中的頁面內容進行合併.</p>
-<p>使用 csave 按鈕存檔無法刪除頁面資料.</p>
-<p>使用 Edit All 模式, 無法使用 csave 按鈕（尚未測試).</p>
-<h1>Week 1</h1>
-<h2>Create New repository and Wecsite</h2>
+<h1>Midterm</h1>
+<h2>Week 1</h2>
+<h3>Create New repository and Wecsite</h3>
 <p><strong>step1. Download protable system<br/></strong></p>
 <p><strong> </strong><span>Go to</span><strong> <a href="https://github.com/mdecourse/cd2021/discussions/7">2021 可攜程式系統</a></strong></p>
 <p><span>First download the </span><strong><a href="https://drive.google.com/file/d/1R6vAAWdNDigmyvFFQTKyM-XNKOWeCFJU/view?usp=sharing" rel="nofollow">下載 kmol2021_spring_v2.7z</a></strong> compressed file<span>, and extract the file to the flash drive.</span></p>
@@ -33,7 +29,7 @@ python wsgi.py</pre>
 <p>Search <strong><a href="/">https://localhost:9443/</a></strong> in the browser</p>
 <p>tip:http"s"</p>
 <p><img alt="" height="1080" src="/images/website localhost.png" width="1920"/></p>
-<h1>Week 2</h1>
+<h2>Week 2</h2>
 <p><strong>分組亂數排序(失敗)</strong></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import random
 import requests
@@ -48,8 +44,8 @@ print(result)
 
 
 </pre>
-<h1>Week 3</h1>
-<h2>upgrade cmsimde</h2>
+<h2>Week 3</h2>
+<h3>upgrade cmsimde</h3>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git pull origin master
 </pre>
 <p><img alt="" height="762" src="/images/upgrade cms.png" width="832"/></p>
@@ -63,14 +59,18 @@ cms
 <p><strong>push</strong></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">cd tmp\cd2021
 acp "更新內容"
-</pre><h2>Webot basic operation</h2>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/03QbjQsOLUE" width="560"></iframe></p><h1>Upgrade pip</h1>
+</pre>
+<p><img alt="" height="638" src="/images/acp.png" width="1223"/></p>
+<h3>Webot basic operation</h3>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/03QbjQsOLUE" width="560"></iframe></p>
+<h1>Upgrade pip</h1>
 <p>Install plugins(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
 </pre>
 <p>Upgrade pip(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">python -m pip install --upgrade pip
-</pre><h1>ssh</h1>
+</pre>
+<h1>ssh</h1>
 <p>input in cmd</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">sh
 ssh-keygen -t rsa -b 4096 -C "學號"
@@ -112,3 +112,8 @@ leo
 <p><img alt="" height="1080" src="/images/newheadline.png" width="1920"/></p>
 <h2>Reveal</h2>
 <p><img alt="" height="1080" src="/images/reveal.png" width="1920"/></p>
+<h1>Code</h1>
+<p>github .stl 3D viewer</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">
+<script src="https://embed.github.com/view/3d/40823108/cd2021/main/EV3-Ontology-1.0.stl"></script>
+</pre>
