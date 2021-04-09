@@ -29,7 +29,7 @@
 <v t="leo.20210315195551.1"><vh>slide 2-7</vh></v>
 <v t="leo.20210316231238.1"><vh>slide 2-8</vh></v>
 </v>
-<v t="leo.20200818170636.1"><vh>slide3</vh>
+<v t="leo.20200818170636.1"><vh>slide 3</vh>
 <v t="leo.20200818170909.1"><vh>slide 3-1</vh></v>
 <v t="leo.20200818170953.1"><vh>slide 3-2</vh></v>
 <v t="leo.20200818171010.1"><vh>slide 3-3</vh></v>
