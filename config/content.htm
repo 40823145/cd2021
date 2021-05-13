@@ -14,7 +14,8 @@
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/a40823112/stage2-ag1.git stage2-ag1 (clone組長倉儲)
 cd stage2-ag1
 git remote add 40823145 https://github.com/40823145/stage2-ag1.git (add自己倉儲)
-</pre><h1>Midterm</h1>
+</pre>
+<h1>Midterm</h1>
 <h2>Week 1</h2>
 <h3>Create New repository and Wecsite</h3>
 <p><strong>step1. Download protable system<br/></strong></p>
@@ -79,14 +80,19 @@ acp "更新內容"
 <p><img alt="" height="638" src="/images/acp.png" width="1223"/></p>
 <h3>Webot basic operation</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/03QbjQsOLUE" width="560"></iframe></p>
-<h1>Upgrade pip</h1>
+<h1>RemoteAPI</h1>
+<p>Python3 remote api 程式控制Coppeliasim 需要 <a href="https://raw.githubusercontent.com/CoppeliaRobotics/remoteApiBindings/master/python/python/sim.py">sim.py</a>, <a href="https://raw.githubusercontent.com/CoppeliaRobotics/remoteApiBindings/master/python/python/simConst.py">simConst.py</a> 與 <a href="https://github.com/CoppeliaRobotics/remoteApiBindings/tree/master/lib/lib/Windows">remoteApi.dll</a> 等三個檔案，將三個檔案與要操控的.py檔放在同一個資料夾中</p>
+<p><img alt="" height="742" src="/images/remote api.png" width="696"/></p>
+<p>將.py放入編譯器修改</p>
+<p><img alt="" height="916" src="/images/py.png" width="702"/></p><h1>Note</h1>
+<h2>Upgrade pip</h2>
 <p>Install plugins(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
 </pre>
 <p>Upgrade pip(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">python -m pip install --upgrade pip
 </pre>
-<h1>ssh</h1>
+<h2>ssh</h2>
 <p>input in cmd</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">sh
 ssh-keygen -t rsa -b 4096 -C "學號"
@@ -108,7 +114,7 @@ ssh-keygen -t rsa -b 4096 -C "學號"
 <p><img alt="" height="916" src="/images/config.png" width="703"/></p>
 <p><strong>Finish</strong></p>
 <p><img alt="" height="683" src="/images/ssh try push.png" width="862"/></p>
-<h1>Leo Editor</h1>
+<h2>Leo Editor</h2>
 <p>Open Leo:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Y:/cd tmp
 leo
@@ -116,7 +122,7 @@ leo
 <p>File-&gt;Open-Outline</p>
 <p>Select Y:\tmp\cd2021\config <strong>Select pelican.leo or reveal.leo</strong></p>
 <p><img alt="" height="1080" src="/images/leo open outline.png" width="1920"/></p>
-<h2>Blog</h2>
+<h3>Blog</h3>
 <p>Add Disqus</p>
 <p><img alt="" height="1080" src="/images/disqus.png" width="1920"/></p>
 <p>Modify the data in the share and remote.</p>
@@ -126,7 +132,7 @@ leo
 <p><img alt="" height="1080" src="/images/edit template.png" width="1920"/></p>
 <p>Modify markdown<img alt="" height="1080" src="/images/clean.png" width="1920"/></p>
 <p><img alt="" height="1080" src="/images/newheadline.png" width="1920"/></p>
-<h2>Reveal</h2>
+<h3>Reveal</h3>
 <p><img alt="" height="1080" src="/images/reveal.png" width="1920"/></p>
 <h1>Code</h1>
 <p>github .stl 3D viewer</p>
