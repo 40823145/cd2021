@@ -1,87 +1,139 @@
-<h1>About</h1>
-<p>GitHub:<a href="https://github.com/40823145/cd2021">https://github.com/40823145/cd2021</a></p>
-<p>YouTube:<a href="https://www.youtube.com/channel/UCVtMNqfQf9l-XS-9VgD1nog?view_as=subscriber">https://www.youtube.com/channel/UCVtMNqfQf9l-XS-9VgD1nog?view_as=subscriber</a></p>
-<h1>Copperation</h1>
-<p>協同設計與版次管理能夠有效提升團隊工作效率，降低內容互相覆蓋，最終造成無法辨識是誰更改內容的情況。</p>
-<p></p>
-<p>領導主幹設立項目Project所需目標要求，主導至最終完成，協作者分支Branch由主幹分配負責工作區或衍生不同設計，各分支皆達到目標需求後合併回主幹，方能生產項目。</p>
-<p></p>
-<p>因協作者的工作與內容更動皆在獨立分支清清楚楚，責任歸屬的也就一目了然。</p>
-<p>分支出來的設計，在本次目標不需要，或許未來的項目可以用上。可以避免掉「當初做過，但改掉了，這次又要重做」這種事情發生</p>
-<p><img alt="" height="673" src="/images/Untitled Diagram-3.png" width="924"/></p>
-<p>組長在倉儲Setting-&gt;Manage access-&gt;Invite a collaborato邀請協作者</p>
-<p>組員在自己倉儲中Setting-&gt;Manage access-&gt;Invite a collaborato組長(組員不用互邀)</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/a40823112/stage2-ag1.git stage2-ag1 (clone組長倉儲)
-cd stage2-ag1
-git remote add 40823145 https://github.com/40823145/stage2-ag1.git (add自己倉儲)
-</pre>
-<h1>Midterm</h1>
-<h2>Week 1</h2>
-<h3>Create New repository and Wecsite</h3>
-<p><strong>step1. Download protable system<br/></strong></p>
-<p><strong> </strong><span>Go to</span><strong> <a href="https://github.com/mdecourse/cd2021/discussions/7">2021 可攜程式系統</a></strong></p>
-<p><span>First download the </span><strong><a href="https://drive.google.com/file/d/1R6vAAWdNDigmyvFFQTKyM-XNKOWeCFJU/view?usp=sharing" rel="nofollow">下載 kmol2021_spring_v2.7z</a></strong> compressed file<span>, and extract the file to the flash drive.</span></p>
-<p><span><strong>step2.</strong></span></p>
-<p>Set <strong>.gitconfig</strong> and save this file in the "home" directory</p>
-<p><img alt="" height="100" src="/images/gitconfit.png" width="350"/></p>
-<p><span><strong>step3. Use cmstemplate <br/></strong></span></p>
-<p><span>Go to <strong><a href="https://github.com/mdecourse/cmstemplate">mdecourse / cmstemplate</a></strong></span></p>
-<p>Click <strong>Use the template</strong></p>
-<p><img alt="" height="1041" src="/images/cmstemplate click.png" width="1920"/></p>
-<p>Repository name:cd2021</p>
-<p>Click <strong>Create new repository from template</strong></p>
-<p><img alt="" height="607" src="/images/create new repository.png" width="856"/></p>
-<p><span><strong>step4. G<i>it clone</i></strong></span></p>
-<p>Go to the github website git clone the URL of your own storage</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git clone --recurse-submodules https://github.com/40823145/cd2021.git</pre>
-<p><img alt="" height="638" src="/images/clone submould.png" width="1223"/></p>
-<p><strong>Upgrade pip and install plugins</strong></p>
-<p><span><strong>step5. Github pages<br/></strong></span></p>
-<p><span><strong><img alt="" height="747" src="/images/github pages.png" width="1042"/></strong></span></p>
-<p>Restart protable system,input in cmd</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">cd tmp
-cd cd2021
-cd cmsimde
-python wsgi.py</pre>
-<p>Search <strong><a href="/">https://localhost:9443/</a></strong> in the browser</p>
-<p>tip:http"s"</p>
-<p><img alt="" height="1080" src="/images/website localhost.png" width="1920"/></p>
-<h2>Week 2</h2>
-<p><strong>分組亂數排序(失敗)</strong></p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import random
-import requests
-from bs4 import BeautifulSoup
+<!DOCTYPE html><html>
+        <head>
+        <title>CMSiMDE</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Quicksand:300,400,500,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/magnific-popup.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/jquery-ui.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/bootstrap-datepicker.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/fonts/flaticon/font/flaticon.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/aos.css">
+        <link rel="stylesheet" href="./../cmsimde/static/chimper/css/style.css">
+        <link rel="shortcut icon" href="./../cmsimde/static/favicons.png">
+        
+        <style type='text/css'>
+            .site-section {
+            background-color: #FFFF;
+            padding: 40px 40px;
+            }
+            body > div > div.dropdown.open {
+                display: block;
+            }
+        </style>
+    
+        <!-- <script src="./../cmsimde/static/jquery.js"></script> -->
+        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
+        <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/normalize.min.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch_set.js"></script>
+        <script src="tipuesearch_content.js"></script>
+        <link rel="stylesheet" href="./../cmsimde/static/tipuesearch/css/tipuesearch.css">
+        <script src="./../cmsimde/static/tipuesearch/tipuesearch.js"></script>
+        <script>
+            /* original tipuesearch
+            $(document).ready(function() {
+                 $('#tipue_search_input').tipuesearch();
+            });
+            */
+            // customed doSearch
+            function doSearch() {
+                $('#tipue_search_input').tipuesearch({
+                    newWindow: true, 
+                    minimumLength: 2,
+                    wholeWords: false, // for search 中文
+                });
+            }
+            $(document).ready(doSearch);
+        </script>
+        
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shCore.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushBash.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDiff.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJScript.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushJava.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPython.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushSql.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushHaxe.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushXml.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushPhp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushLua.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
+<link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<!-- 暫時不用
+<script src="./../cmsimde/static/fengari-web.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/Cango-13v08-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/CangoAxes-4v01-min.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/gearUtils-05.js"></script>
+-->
+<!-- for Brython 暫時不用
+<script src="https://scrum-3.github.io/web/brython/brython.js"></script>
+<script src="https://scrum-3.github.io/web/brython/brython_stdlib.js"></script>
+-->
+<style>
+img.add_border {
+    border: 3px solid blue;
+}
+</style>
 
-response = requests.get(
-    "https://ethercalc.net/awlfom9374eg_rqqa77ezdfrl/app")
-soup = BeautifulSoup(response.text, "html.parser")
-result = soup.find("tr","td")
-#random.shuffle(result)
-print(result)
+</head>
+<body>
+<div class='container'><nav>
+        
+    <div class="site-wrap">
 
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
+            <header class="site-navbar py-4 bg-white" role="banner">
+              <div class="container-fluid">
+                <div class="row align-items-center">
+                <h1>40823145-cd2021</h1>
+                <div class="pl-4">
+                    <form>
+                    <input type="text" placeholder="Search" name="q" id="tipue_search_input" pattern=".{2,}" title="At least 2 characters" required>
+                    </form>
+                </div>
+                  <!-- <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo"><a href="index.html" class="text-black h2 mb-0">40823145-cd2021</a></h1> 
+                  </div>
+                  -->
+                  <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+    <ul class='site-menu js-clone-nav mr-auto d-none d-lg-block'>
+                        <li class="active has-children"><a href="index.html">Home</a>
+                        <ul class="dropdown">
+                            <li><a href="sitemap.html">Site Map</a></li>
+                            <li><a href="./../reveal/index.html">reveal</a></li>
+                            <li><a href="./../blog/index.html">blog</a></li>
+                        </ul>
+                      </li>
+                     <li><a href='About.html'>About</a><li><a href='Copperation.html'>Copperation</a><li class='has-children'><a href='Midterm.html'>Midterm</a><ul class='dropdown'><li class='has-children'><a href='Week 1.html'>Week 1</a><ul class='dropdown'><li><a href='Create New repository and Wecsite.html'>Create New repository and Wecsite</a></li></ul><li><a href='Week 2.html'>Week 2</a><li class='has-children'><a href='Week 3.html'>Week 3</a><ul class='dropdown'><li><a href='upgrade cmsimde.html'>upgrade cmsimde</a><li><a href='Webot basic operation.html'>Webot basic operation</a></li></li></ul></ul><li class='has-children'><a href='stage3.html'>stage3</a><ul class='dropdown'><li><a href='Task1.html'>Task1</a><li><a href='Task2.html'>Task2</a><li><a href='W13.html'>W13</a><li><a href='W14.html'>W14</a><li><a href='W15.html'>W15</a></li></ul><li class='has-children'><a href='Note.html'>Note</a><ul class='dropdown'><li><a href='Upgrade pip.html'>Upgrade pip</a><li><a href='ssh.html'>ssh</a><li class='has-children'><a href='Leo Editor.html'>Leo Editor</a><ul class='dropdown'><li><a href='Blog.html'>Blog</a><li><a href='Reveal.html'>Reveal</a></li></li></ul></ul><li><a href='Code.html'>Code</a><li><a href='test.html'>test</a></li>
+                      </ul>
+                </nav>
+              </div>
+              <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+              </div>
 
-</pre>
-<h2>Week 3</h2>
-<h3>upgrade cmsimde</h3>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">git pull origin master
-</pre>
-<p><img alt="" height="762" src="/images/upgrade cms.png" width="832"/></p>
-<div class="J0lOec"><span class="VIiyi" jsaction="mouseup:BR6jm" jsname="jqKxS" lang="en"><span class="JLqJ4b ChMk0b" data-language-for-alternatives="en" data-language-to-translate-into="auto" data-phrase-index="0" jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb" jscontroller="Zl5N8" jsdata="uqLsIf;_;$190" jsmodel="SsMkhd" jsname="txFAF"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb">Copy the new file to Y:\tmp\cd2021&gt;</span></span></span></div>
-<p><img alt="" height="1041" src="/images/5 new file.png" width="1920"/></p>
-<p><strong><span class="VIiyi" jsaction="mouseup:BR6jm" jsname="jqKxS" lang="en"><span class="JLqJ4b ChMk0b" data-language-for-alternatives="en" data-language-to-translate-into="auto" data-phrase-index="0" jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb" jscontroller="Zl5N8" jsdata="uqLsIf;_;$354" jsmodel="SsMkhd" jsname="txFAF"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb">cmsimde connection method</span></span></span></strong></p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">cd tmp\cd2021
-cms
-</pre>
-<p><img alt="" height="638" src="/images/cms connet.png" width="870"/></p>
-<p><strong>push</strong></p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">cd tmp\cd2021
-acp "更新內容"
-</pre>
-<p><img alt="" height="638" src="/images/acp.png" width="1223"/></p>
-<h3>Webot basic operation</h3>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/03QbjQsOLUE" width="560"></iframe></p>
-<h1>stage3</h1>
-<h2>Task1</h2>
+            </div>
+          </div>
+          
+        </header>
+    <div id="tipue_search_content">stage3 << <a href='stage3.html'>Previous</a> <a href='Task2.html'>Next</a> >> Task2<br /><h1>Task1</h1>
 <p>讀取 stage3_2a.txt, 建立 Stage3 的分組倉儲, 分組網頁, 以及各組員倉儲及網頁連結.</p>
 <p>已知<span> </span><a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">stage3_2a.txt</a><span>內容, 以及初步資料讀取程式:</span></p>
 <div>
@@ -357,75 +409,54 @@ acp "更新內容"
 <p>40823149 | Website:<a href="https://40823149.github.io/cd2021">40823149</a><span> </span>| Repository:<a href="https://github.com/40823149/cd2021">40823149</a><span> </span>| Group Website:<a href="https://40823149.github.io/stage3-ag6">40823149</a></p>
 <p>40823153 | Website:<a href="https://40823153.github.io/cd2021">40823153</a><span> </span>| Repository:<a href="https://github.com/40823153/cd2021">40823153</a><span> </span>| Group Website:<a href="https://40823153.github.io/stage3-ag6">40823153</a></p>
 <p></p>
-<h2>Task2</h2>
-<p><strong>RemoteAPI</strong></p>
-<p>Python3 remote api 程式控制Coppeliasim 需要 <a href="https://raw.githubusercontent.com/CoppeliaRobotics/remoteApiBindings/master/python/python/sim.py">sim.py</a>, <a href="https://raw.githubusercontent.com/CoppeliaRobotics/remoteApiBindings/master/python/python/simConst.py">simConst.py</a> 與 <a href="https://github.com/CoppeliaRobotics/remoteApiBindings/tree/master/lib/lib/Windows">remoteApi.dll</a> 等三個檔案，將三個檔案與要操控的.py檔放在同一個資料夾中</p>
-<p><img alt="" height="742" src="/images/remote api.png" width="696"/></p>
-<p>將.py放入編譯器修改</p>
-<p><img alt="" height="916" src="/images/py.png" width="702"/></p>
-<h2>W13</h2>
-<p>為因應校方公告:</p>
-<p style="padding-left: 30px;"><a href="http://mde.tw/cd2021/downloads/「嚴重特殊傳染性肺炎」疫情課程彈性處理事項_遠距教學公告_0515D(中英版本).pdf">「嚴重特殊傳染性肺炎」疫情課程彈性處理事項_遠距教學公告_0515D(中英版本).pdf</a></p>
-<p>5月17日至5月30日全校所有課程改採遠距教學.</p>
-<p>本課程將在 W13-W14 週採取同步線上模式上課, 請所有修課學員密切注意 <a href="https://gitter.im/mdecourse/cd2021">https://gitter.im/mdecourse/cd2021</a> 上之公告, 線上同步上課將採 OBS + Youtube 配合 <a href="https://meet.google.com">https://meet.google.com</a> 直播方式進行, 請各學員屆時必須事先登入 github 帳號與 @gm 電子郵箱帳號, 以便在課程直播網站上留言討論.</p>
-<p>同步直播課程進行過程將指定各組員針對課程內容進行直播操作, 負責直播學員必須即時將直播網址公布於 <a href="https://gitter.im/mdecourse/cd2021">https://gitter.im/mdecourse/cd2021</a>, 以便與其他學員及老師進行互動.</p>
-<p>課程同步直播時段將與上課時段相同, 每段直播中間的暫停時間將視實際情況決定.</p>
-<p></p>
-<p>本週小組同步直播</p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/a8Uw1WOhCYk" title="YouTube video player" width="560"></iframe></p>
-<h2>W14</h2>
-<h2>W15</h2>
-<h1>Note</h1>
-<h2>Upgrade pip</h2>
-<p>Install plugins(in cmd):</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
-</pre>
-<p>Upgrade pip(in cmd):</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">python -m pip install --upgrade pip
-</pre>
-<h2>ssh</h2>
-<p>input in cmd</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">sh
-ssh-keygen -t rsa -b 4096 -C "學號"
-</pre>
-<p><img alt="" height="637" src="/images/ssh keygent.png" width="1222"/></p>
-<p>Stored in the <strong>y:\hom\.ssh</strong> directory by default</p>
-<p><img alt="" height="812" src="/images/.ssh.png" width="1022"/></p>
-<p>Use puttygen to import private key (<strong>id_ras</strong>) and convert it to (<strong>.ppk</strong>) file</p>
-<p><img alt="" height="580" src="/images/putty key gen.png" width="637"/></p>
-<p>Use scite to open the public key (<strong>id_rsa.pub</strong>), go to tool-&gt;Options-&gt;Wrap to see the complete file content</p>
-<p>Copy all, paste in github setting-&gt;SSH and GPG keys-&gt;New SSH key <span class="zEswK"></span></p>
-<p><img alt="" height="797" src="/images/ssh new key.png" width="1135"/></p>
-<p>Open putty.exe</p>
-<p>Input github.com, Click SSH-&gt;Auth<span class="VIiyi" jsaction="mouseup:BR6jm" jsname="jqKxS" lang="en"><span class="JLqJ4b ChMk0b" data-language-for-alternatives="en" data-language-to-translate-into="zh-CN" data-phrase-index="0" jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb" jscontroller="Zl5N8" jsdata="uqLsIf;_;$287" jsmodel="SsMkhd" jsname="txFAF"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb"></span></span></span></p>
-<p>Click Browes to find (<strong>.ppk</strong>) in the .ssh directory<span class="VIiyi" jsaction="mouseup:BR6jm" jsname="jqKxS" lang="en"><span class="JLqJ4b ChMk0b" data-language-for-alternatives="en" data-language-to-translate-into="zh-CN" data-phrase-index="0" jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb" jscontroller="Zl5N8" jsdata="uqLsIf;_;$386" jsmodel="SsMkhd" jsname="txFAF"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb"></span></span></span> <span class="zEswK"></span></p>
-<p><img alt="" height="542" src="/images/putty github.png" width="602"/></p>
-<p><img alt="" height="542" src="/images/ppk.png" width="602"/></p>
-<p>Enter Y:\tmp\cd2021\.git and modify the <strong>config</strong> file to <strong>git@github.com:40823145/cd2021.git</strong><span class="VIiyi" jsaction="mouseup:BR6jm" jsname="jqKxS" lang="en"><span class="JLqJ4b ChMk0b" data-language-for-alternatives="en" data-language-to-translate-into="zh-CN" data-phrase-index="0" jsaction="agoMJf:PFBcW;usxOmf:aWLT7;jhKsnd:P7O7bd,F8DmGf;Q4AGo:Gm7gYd,qAKMYb;uFUCPb:pvnm0e,pfE8Hb,PFBcW;f56efd:dJXsye;EnoYf:KNzws,ZJsZZ,JgVSJc;zdMJQc:cCQNKb,ZJsZZ,zchEXc;Ytrrj:JJDvdc;tNR8yc:GeFvjb;oFN6Ye:hij5Wb" jscontroller="Zl5N8" jsdata="uqLsIf;_;$430" jsmodel="SsMkhd" jsname="txFAF"><span jsaction="click:qtZ4nf,GFf3ac,tMZCfe; contextmenu:Nqw7Te,QP7LD; mouseout:Nqw7Te; mouseover:qtZ4nf,c2aHje" jsname="W297wb"><strong></strong></span></span></span> <span class="zEswK"></span></p>
-<p><img alt="" height="916" src="/images/config.png" width="703"/></p>
-<p><strong>Finish</strong></p>
-<p><img alt="" height="683" src="/images/ssh try push.png" width="862"/></p>
-<h2>Leo Editor</h2>
-<p>Open Leo:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">Y:/cd tmp
-leo
-</pre>
-<p>File-&gt;Open-Outline</p>
-<p>Select Y:\tmp\cd2021\config <strong>Select pelican.leo or reveal.leo</strong></p>
-<p><img alt="" height="1080" src="/images/leo open outline.png" width="1920"/></p>
-<h3>Blog</h3>
-<p>Add Disqus</p>
-<p><img alt="" height="1080" src="/images/disqus.png" width="1920"/></p>
-<p>Modify the data in the share and remote.</p>
-<p><img alt="" height="1080" src="/images/pelicanconf.png" width="1920"/></p>
-<p><img alt="" height="1080" src="/images/pelicanconf2.png" width="1920"/></p>
-<p>Edit template-&gt;@edit base.html</p>
-<p><img alt="" height="1080" src="/images/edit template.png" width="1920"/></p>
-<p>Modify markdown<img alt="" height="1080" src="/images/clean.png" width="1920"/></p>
-<p><img alt="" height="1080" src="/images/newheadline.png" width="1920"/></p>
-<h3>Reveal</h3>
-<p><img alt="" height="1080" src="/images/reveal.png" width="1920"/></p>
-<h1>Code</h1>
-<p>github .stl 3D viewer</p>
-<p><span style="color: #999999;">&lt;script src="https://embed.github.com/view/3d/檔案位置"&gt;&lt;/script&gt;</span></p>
-<h1><span style="color: #999999;">test</span></h1>
+<br />stage3 << <a href='stage3.html'>Previous</a> <a href='Task2.html'>Next</a> >> Task2</div>
+        
+    <!-- footer -->
+      <div class="container">
+        <div class="row pt-3 mx-auto">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+        </div>
+      </div>
+    <!-- for footer -->
+    
+        </div> <!-- for site wrap -->
+            <!-- <script src="../cmsimde/static/chimper/js/jquery-3.3.1.min.js"></script> -->
+            <script src="../cmsimde/static/chimper/js/jquery-migrate-3.0.1.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery-ui.js"></script>
+            <script src="../cmsimde/static/chimper/js/popper.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/owl.carousel.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.stellar.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.countdown.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/jquery.magnific-popup.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/bootstrap-datepicker.min.js"></script>
+            <script src="../cmsimde/static/chimper/js/aos.js"></script>
+            <!--
+            <script src="../cmsimde/static/chimper/js/typed.js"></script>
+                    <script>
+                    var typed = new Typed('.typed-words', {
+                    strings: ["Web Apps"," WordPress"," Mobile Apps"],
+                    typeSpeed: 80,
+                    backSpeed: 80,
+                    backDelay: 4000,
+                    startDelay: 1000,
+                    loop: true,
+                    showCursor: true
+                    });
+                    </script>
+            -->
+            <script src="../cmsimde/static/chimper/js/main.js"></script>
+        
+<!-- 啟用 LaTeX equations 編輯 -->
+  <!-- <script>
+  MathJax = {
+    tex: {inlineMath: [['$', '$'], ['\(', '\)']]}
+  };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>-->
+    </body></html>
+        
