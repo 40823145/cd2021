@@ -80,11 +80,301 @@ acp "更新內容"
 <p><img alt="" height="638" src="/images/acp.png" width="1223"/></p>
 <h3>Webot basic operation</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/03QbjQsOLUE" width="560"></iframe></p>
-<h1>RemoteAPI</h1>
+<h1>stage3</h1>
+<h2>Task1</h2>
+<p>讀取 stage3_2a.txt, 建立 Stage3 的分組倉儲, 分組網頁, 以及各組員倉儲及網頁連結.</p>
+<p>已知<span> </span><a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">stage3_2a.txt</a><span>內容, 以及初步資料讀取程式:</span></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_441610">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+<div class="line number5 index4 alt2">5</div>
+<div class="line number6 index5 alt1">6</div>
+<div class="line number7 index6 alt2">7</div>
+<div class="line number8 index7 alt1">8</div>
+<div class="line number9 index8 alt2">9</div>
+<div class="line number10 index9 alt1">10</div>
+<div class="line number11 index10 alt2">11</div>
+<div class="line number12 index11 alt1">12</div>
+<div class="line number13 index12 alt2">13</div>
+<div class="line number14 index13 alt1">14</div>
+<div class="line number15 index14 alt2">15</div>
+<div class="line number16 index15 alt1">16</div>
+<div class="line number17 index16 alt2">17</div>
+<div class="line number18 index17 alt1">18</div>
+<div class="line number19 index18 alt2">19</div>
+<div class="line number20 index19 alt1">20</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py comments"># open file, default is read mode, since txt content no chinese char4</code></div>
+<div class="line number2 index1 alt1"><code class="py comments"># no encoding = "UTF-08" is needed</code></div>
+<div class="line number3 index2 alt2"><code class="py plain">with </code><code class="py functions">open</code><code class="py plain">(</code><code class="py string">"stage3_2a.txt"</code><code class="py plain">) as fh:</code></div>
+<div class="line number4 index3 alt1"><code class="py spaces">    </code><code class="py comments"># readlines will read into the whole line and put into list format 23</code></div>
+<div class="line number5 index4 alt2"><code class="py spaces">    </code><code class="py comments"># has \n at the end of each line 13</code></div>
+<div class="line number6 index5 alt1"><code class="py spaces">    </code><code class="py plain">data </code><code class="py keyword">=</code> <code class="py plain">fh.readlines()</code></div>
+<div class="line number7 index6 alt2"><code class="py spaces">    </code><code class="py plain">data </code><code class="py keyword">=</code> <code class="py plain">[a.replace(</code><code class="py string">'4823122'</code><code class="py plain">,</code><code class="py string">'40823122'</code><code class="py plain">) </code><code class="py keyword">for</code> <code class="py plain">a </code><code class="py keyword">in</code> <code class="py plain">data]</code></div>
+<div class="line number8 index7 alt1"><code class="py spaces">    </code><code class="py plain">data </code><code class="py keyword">=</code> <code class="py plain">[c.replace(</code><code class="py string">'\t\t\t\t'</code><code class="py plain">,'') </code><code class="py keyword">for</code> <code class="py plain">c </code><code class="py keyword">in</code> <code class="py plain">data]</code></div>
+<div class="line number9 index8 alt2"><code class="py spaces">    </code><code class="py functions">print</code><code class="py plain">(data)</code></div>
+<div class="line number10 index9 alt1"><code class="py comments">#print(len(data))1</code></div>
+<div class="line number11 index10 alt2"><code class="py keyword">for</code> <code class="py plain">i </code><code class="py keyword">in</code> <code class="py functions">range</code><code class="py plain">(</code><code class="py functions">len</code><code class="py plain">(data)):</code></div>
+<div class="line number12 index11 alt1"><code class="py spaces">    </code><code class="py plain">group </code><code class="py keyword">=</code> <code class="py plain">data[i].rstrip(</code><code class="py string">"\n"</code><code class="py plain">).split(</code><code class="py string">"\t"</code><code class="py plain">)</code></div>
+<div class="line number13 index12 alt2"><code class="py spaces">    </code><code class="py functions">print</code><code class="py plain">(</code><code class="py string">'&lt;p&gt;'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">0</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'|&lt;a href="https://'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">1</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'.github.io/stage3-ag'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">0</code><code class="py plain">][</code><code class="py value">9</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'"&gt;網站&lt;/a&gt;|&lt;a href="https://github.com/'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">2</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'/stage3-ag'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">0</code><code class="py plain">][</code><code class="py value">9</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'"&gt;倉儲&lt;/a&gt;&lt;/p&gt;'</code><code class="py plain">)</code></div>
+<div class="line number14 index13 alt1"><code class="py comments"># the following will use group data to generate needed html</code></div>
+<div class="line number15 index14 alt2"><code class="py spaces">  </code> </div>
+<div class="line number16 index15 alt1"><code class="py spaces">    </code><code class="py keyword">for</code> <code class="py plain">j </code><code class="py keyword">in</code> <code class="py functions">range</code><code class="py plain">(</code><code class="py value">2</code><code class="py plain">,</code><code class="py value">18</code><code class="py plain">,</code><code class="py value">2</code><code class="py plain">):</code></div>
+<div class="line number17 index16 alt2"><code class="py spaces">        </code><code class="py keyword">try</code><code class="py plain">:</code></div>
+<div class="line number18 index17 alt1"><code class="py spaces">            </code><code class="py functions">print</code><code class="py plain">(</code><code class="py string">'&lt;p&gt;'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'|Website:'</code><code class="py keyword">+</code><code class="py string">'&lt;a href="https://'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'.github.io/cd2021'</code><code class="py keyword">+</code><code class="py string">'"&gt;'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'&lt;/a&gt;'</code><code class="py keyword">+</code><code class="py string">'|Repository:'</code><code class="py keyword">+</code><code class="py string">'&lt;a href="https://github.com/'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'/cd2021'</code><code class="py keyword">+</code><code class="py string">'"&gt;'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'&lt;/a&gt;&lt;/p&gt;'</code><code class="py plain">)</code></div>
+<div class="line number19 index18 alt2"><code class="py spaces">        </code><code class="py keyword">except</code><code class="py plain">:</code></div>
+<div class="line number20 index19 alt1"><code class="py spaces">            </code><code class="py keyword">continue</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span>程式解說</span></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_787074">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py plain">with </code><code class="py functions">open</code><code class="py plain">(</code><code class="py string">"stage3_2a.txt"</code><code class="py plain">) as fh:</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>開啟檔案 stage3_2a</p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_994270">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py plain">data </code><code class="py keyword">=</code> <code class="py plain">fh.readlines()</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span>讀取所有行(直到結束)</span></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_317700">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py plain">data </code><code class="py keyword">=</code> <code class="py plain">[a.replace(</code><code class="py string">'4823122'</code><code class="py plain">,</code><code class="py string">'40823122'</code><code class="py plain">) </code><code class="py keyword">for</code> <code class="py plain">a </code><code class="py keyword">in</code> <code class="py plain">data]</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span>把字符串中的old（舊字符串） 替換成new(新字符串)<code class="py plain">a.replace(</code><code class="py string">'須改的'</code><code class="py plain">,</code><code class="py string">'更改成的',更改次數</code><code class="py plain">)</code></span></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_731391">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py plain">data </code><code class="py keyword">=</code> <code class="py plain">[c.replace(</code><code class="py string">'\t\t\t\t'</code><code class="py plain">,'') </code><code class="py keyword">for</code> <code class="py plain">c </code><code class="py keyword">in</code> <code class="py plain">data]</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><code class="py plain">(</code><code class="py string">'\t\t\t\t'</code><code class="py plain">,'')將排序出來的結果作空格</code></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_838197">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py keyword">for</code> <code class="py plain">i </code><code class="py keyword">in</code> <code class="py functions">range</code><code class="py plain">(</code><code class="py functions">len</code><code class="py plain">(data)):</code></div>
+<div class="line number2 index1 alt1"><code class="py spaces">    </code><code class="py plain">group </code><code class="py keyword">=</code> <code class="py plain">data[i].rstrip(</code><code class="py string">"\n"</code><code class="py plain">).split(</code><code class="py string">"\t"</code><code class="py plain">)</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span>分析檔案範圍有六組，進行迴圈，變數為i</span></p>
+<p><span>將data列表中第i項，去除元素\n(換行)利用\t(空格)分割</span></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_151181">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py functions">print</code><code class="py plain">(</code><code class="py string">'&lt;p&gt;'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">0</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'|&lt;a href="https://'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">1</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'.github.io/stage3-ag'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">0</code><code class="py plain">][</code><code class="py value">9</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'"&gt;網站&lt;/a&gt;|&lt;a href="https://github.com/'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">2</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'/stage3-ag'</code><code class="py keyword">+</code><code class="py plain">group[</code><code class="py value">0</code><code class="py plain">][</code><code class="py value">9</code><code class="py plain">]</code><code class="py keyword">+</code><code class="py string">'"&gt;倉儲&lt;/a&gt;&lt;/p&gt;'</code><code class="py plain">)</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p><span>group[0][9]=第0個第9位</span></p>
+<p><span>print出group list 中的元素，放入html格式，依序列出</span></p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_795298">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py keyword">for</code> <code class="py plain">j </code><code class="py keyword">in</code> <code class="py functions">range</code><code class="py plain">(</code><code class="py value">2</code><code class="py plain">,</code><code class="py value">18</code><code class="py plain">,</code><code class="py value">2</code><code class="py plain">):</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>從2開始每次跳2格最多跳到16不可超過18</p>
+<div>
+<div class="syntaxhighlighter py" id="highlighter_753117">
+<table border="0" cellpadding="0" cellspacing="0">
+<tbody>
+<tr>
+<td class="gutter">
+<div class="line number1 index0 alt2">1</div>
+<div class="line number2 index1 alt1">2</div>
+<div class="line number3 index2 alt2">3</div>
+<div class="line number4 index3 alt1">4</div>
+</td>
+<td class="code">
+<div class="container">
+<div class="line number1 index0 alt2"><code class="py keyword">try</code><code class="py plain">:</code></div>
+<div class="line number2 index1 alt1"><code class="py spaces">            </code><code class="py functions">print</code><code class="py plain">(</code><code class="py string">'&lt;p&gt;'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'|Website:'</code><code class="py keyword">+</code><code class="py string">'&lt;a href="https://'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'.github.io/cd2021'</code><code class="py keyword">+</code><code class="py string">'"&gt;'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'&lt;/a&gt;'</code><code class="py keyword">+</code><code class="py string">'|Repository:'</code><code class="py keyword">+</code><code class="py string">'&lt;a href="https://github.com/'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'/cd2021'</code><code class="py keyword">+</code><code class="py string">'"&gt;'</code><code class="py keyword">+</code><code class="py plain">group[j]</code><code class="py keyword">+</code><code class="py string">'&lt;/a&gt;&lt;/p&gt;'</code><code class="py plain">)</code></div>
+<div class="line number3 index2 alt2"><code class="py spaces">        </code><code class="py keyword">except</code><code class="py plain">:</code></div>
+<div class="line number4 index3 alt1"><code class="py spaces">            </code><code class="py keyword">continue</code></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>用print出group list 中的元素，放入html格式，依序列出來</p>
+<p>列出各分組倉儲, 分組網站與學員倉儲及學員網站連結:</p>
+<p>stage3_ag1 |<span> </span><a href="https://40823131.github.io/stage3-ag1">網站</a><span> </span>|<span> </span><a href="https://github.com/40823131/stage3-ag1">倉儲</a></p>
+<p>40823131 | Website:<a href="https://40823131.github.io/cd2021">40823131</a><span> </span>| Repository:<a href="https://github.com/40823131/cd2021">40823131</a><span> </span>| Group Website:<a href="https://40823131.github.io/stage3-ag1">40823131</a></p>
+<p>a40823112 | Website:<a href="https://a40823112.github.io/cd2021">a40823112</a><span> </span>| Repository:<a href="https://github.com/a40823112/cd2021">a40823112</a><span> </span>| Group Website:<a href="https://a40823112.github.io/stage3-ag1">a40823112</a></p>
+<p>40823123 | Website:<a href="https://40823123.github.io/cd2021">40823123</a><span> </span>| Repository:<a href="https://github.com/40823123/cd2021">40823123</a><span> </span>| Group Website:<a href="https://40823123.github.io/stage3-ag1">40823123</a></p>
+<p>40823145 | Website:<a href="https://40823145.github.io/cd2021">40823145</a><span> </span>| Repository:<a href="https://github.com/40823145/cd2021">40823145</a><span> </span>| Group Website:<a href="https://40823145.github.io/stage3-ag1">40823145</a></p>
+<p>40823136 | Website:<a href="https://40823136.github.io/cd2021">40823136</a><span> </span>| Repository:<a href="https://github.com/40823136/cd2021">40823136</a><span> </span>| Group Website:<a href="https://40823136.github.io/stage3-ag1">40823136</a></p>
+<p>40823109 | Website:<a href="https://40823109.github.io/cd2021">40823109</a><span> </span>| Repository:<a href="https://github.com/40823109/cd2021">40823109</a><span> </span>| Group Website:<a href="https://40823109.github.io/stage3-ag1">40823109</a></p>
+<p>40823116 | Website:<a href="https://40823116.github.io/cd2021">40823116</a><span> </span>| Repository:<a href="https://github.com/40823116/cd2021">40823116</a><span> </span>| Group Website:<a href="https://40823116.github.io/stage3-ag1">40823116</a></p>
+<p>40823108 | Website:<a href="https://40823108.github.io/cd2021">40823108</a><span> </span>| Repository:<a href="https://github.com/40823108/cd2021">40823108</a><span> </span>| Group Website:<a href="https://40823108.github.io/stage3-ag1">40823108</a></p>
+<p>stage3_ag2 |<span> </span><a href="https://40823151.github.io/stage3-ag2">網站</a><span> </span>|<span> </span><a href="https://github.com/40823151/stage3-ag2">倉儲</a></p>
+<p>40823151 | Website:<a href="https://40823151.github.io/cd2021">40823151</a><span> </span>| Repository:<a href="https://github.com/40823151/cd2021">40823151</a><span> </span>| Group Website:<a href="https://40823151.github.io/stage3-ag2">40823151</a></p>
+<p>40623121 | Website:<a href="https://40623121.github.io/cd2021">40623121</a><span> </span>| Repository:<a href="https://github.com/40623121/cd2021">40623121</a><span> </span>| Group Website:<a href="https://40623121.github.io/stage3-ag2">40623121</a></p>
+<p>40871106 | Website:<a href="https://40871106.github.io/cd2021">40871106</a><span> </span>| Repository:<a href="https://github.com/40871106/cd2021">40871106</a><span> </span>| Group Website:<a href="https://40871106.github.io/stage3-ag2">40871106</a></p>
+<p>40823102 | Website:<a href="https://40823102.github.io/cd2021">40823102</a><span> </span>| Repository:<a href="https://github.com/40823102/cd2021">40823102</a><span> </span>| Group Website:<a href="https://40823102.github.io/stage3-ag2">40823102</a></p>
+<p>40823104 | Website:<a href="https://40823104.github.io/cd2021">40823104</a><span> </span>| Repository:<a href="https://github.com/40823104/cd2021">40823104</a><span> </span>| Group Website:<a href="https://40823104.github.io/stage3-ag2">40823104</a></p>
+<p>40823106 | Website:<a href="https://40823106.github.io/cd2021">40823106</a><span> </span>| Repository:<a href="https://github.com/40823106/cd2021">40823106</a><span> </span>| Group Website:<a href="https://40823106.github.io/stage3-ag2">40823106</a></p>
+<p>40823101 | Website:<a href="https://40823101.github.io/cd2021">40823101</a><span> </span>| Repository:<a href="https://github.com/40823101/cd2021">40823101</a><span> </span>| Group Website:<a href="https://40823101.github.io/stage3-ag2">40823101</a></p>
+<p>40823132 | Website:<a href="https://40823132.github.io/cd2021">40823132</a><span> </span>| Repository:<a href="https://github.com/40823132/cd2021">40823132</a><span> </span>| Group Website:<a href="https://40823132.github.io/stage3-ag2">40823132</a></p>
+<p>stage3_ag3 |<span> </span><a href="https://40823119.github.io/stage3-ag3">網站</a><span> </span>|<span> </span><a href="https://github.com/40823119/stage3-ag3">倉儲</a></p>
+<p>40823119 | Website:<a href="https://40823119.github.io/cd2021">40823119</a><span> </span>| Repository:<a href="https://github.com/40823119/cd2021">40823119</a><span> </span>| Group Website:<a href="https://40823119.github.io/stage3-ag3">40823119</a></p>
+<p>40823150 | Website:<a href="https://40823150.github.io/cd2021">40823150</a><span> </span>| Repository:<a href="https://github.com/40823150/cd2021">40823150</a><span> </span>| Group Website:<a href="https://40823150.github.io/stage3-ag3">40823150</a></p>
+<p>40823103 | Website:<a href="https://40823103.github.io/cd2021">40823103</a><span> </span>| Repository:<a href="https://github.com/40823103/cd2021">40823103</a><span> </span>| Group Website:<a href="https://40823103.github.io/stage3-ag3">40823103</a></p>
+<p>40823107 | Website:<a href="https://40823107.github.io/cd2021">40823107</a><span> </span>| Repository:<a href="https://github.com/40823107/cd2021">40823107</a><span> </span>| Group Website:<a href="https://40823107.github.io/stage3-ag3">40823107</a></p>
+<p>40523252 | Website:<a href="https://40523252.github.io/cd2021">40523252</a><span> </span>| Repository:<a href="https://github.com/40523252/cd2021">40523252</a><span> </span>| Group Website:<a href="https://40523252.github.io/stage3-ag3">40523252</a></p>
+<p>40823154 | Website:<a href="https://40823154.github.io/cd2021">40823154</a><span> </span>| Repository:<a href="https://github.com/40823154/cd2021">40823154</a><span> </span>| Group Website:<a href="https://40823154.github.io/stage3-ag3">40823154</a></p>
+<p>stage3_ag4 |<span> </span><a href="https://40823142.github.io/stage3-ag4">網站</a><span> </span>|<span> </span><a href="https://github.com/40823142/stage3-ag4">倉儲</a></p>
+<p>40823142 | Website:<a href="https://40823142.github.io/cd2021">40823142</a><span> </span>| Repository:<a href="https://github.com/40823142/cd2021">40823142</a><span> </span>| Group Website:<a href="https://40823142.github.io/stage3-ag4">40823142</a></p>
+<p>40823144 | Website:<a href="https://40823144.github.io/cd2021">40823144</a><span> </span>| Repository:<a href="https://github.com/40823144/cd2021">40823144</a><span> </span>| Group Website:<a href="https://40823144.github.io/stage3-ag4">40823144</a></p>
+<p>40823127 | Website:<a href="https://40823127.github.io/cd2021">40823127</a><span> </span>| Repository:<a href="https://github.com/40823127/cd2021">40823127</a><span> </span>| Group Website:<a href="https://40823127.github.io/stage3-ag4">40823127</a></p>
+<p>40823148 | Website:<a href="https://40823148.github.io/cd2021">40823148</a><span> </span>| Repository:<a href="https://github.com/40823148/cd2021">40823148</a><span> </span>| Group Website:<a href="https://40823148.github.io/stage3-ag4">40823148</a></p>
+<p>40823121 | Website:<a href="https://40823121.github.io/cd2021">40823121</a><span> </span>| Repository:<a href="https://github.com/40823121/cd2021">40823121</a><span> </span>| Group Website:<a href="https://40823121.github.io/stage3-ag4">40823121</a></p>
+<p>40823135 | Website:<a href="https://40823135.github.io/cd2021">40823135</a><span> </span>| Repository:<a href="https://github.com/40823135/cd2021">40823135</a><span> </span>| Group Website:<a href="https://40823135.github.io/stage3-ag4">40823135</a></p>
+<p>40823114 | Website:<a href="https://40823114.github.io/cd2021">40823114</a><span> </span>| Repository:<a href="https://github.com/40823114/cd2021">40823114</a><span> </span>| Group Website:<a href="https://40823114.github.io/stage3-ag4">40823114</a></p>
+<p>40823146 | Website:<a href="https://40823146.github.io/cd2021">40823146</a><span> </span>| Repository:<a href="https://github.com/40823146/cd2021">40823146</a><span> </span>| Group Website:<a href="https://40823146.github.io/stage3-ag4">40823146</a></p>
+<p>stage3_ag5 |<span> </span><a href="https://40823111.github.io/stage3-ag5">網站</a><span> </span>|<span> </span><a href="https://github.com/40823111/stage3-ag5">倉儲</a></p>
+<p>40823111 | Website:<a href="https://40823111.github.io/cd2021">40823111</a><span> </span>| Repository:<a href="https://github.com/40823111/cd2021">40823111</a><span> </span>| Group Website:<a href="https://40823111.github.io/stage3-ag5">40823111</a></p>
+<p>40823115 | Website:<a href="https://40823115.github.io/cd2021">40823115</a><span> </span>| Repository:<a href="https://github.com/40823115/cd2021">40823115</a><span> </span>| Group Website:<a href="https://40823115.github.io/stage3-ag5">40823115</a></p>
+<p>40823128 | Website:<a href="https://40823128.github.io/cd2021">40823128</a><span> </span>| Repository:<a href="https://github.com/40823128/cd2021">40823128</a><span> </span>| Group Website:<a href="https://40823128.github.io/stage3-ag5">40823128</a></p>
+<p>40823120 | Website:<a href="https://40823120.github.io/cd2021">40823120</a><span> </span>| Repository:<a href="https://github.com/40823120/cd2021">40823120</a><span> </span>| Group Website:<a href="https://40823120.github.io/stage3-ag5">40823120</a></p>
+<p>40823140 | Website:<a href="https://40823140.github.io/cd2021">40823140</a><span> </span>| Repository:<a href="https://github.com/40823140/cd2021">40823140</a><span> </span>| Group Website:<a href="https://40823140.github.io/stage3-ag5">40823140</a></p>
+<p>40823124 | Website:<a href="https://40823124.github.io/cd2021">40823124</a><span> </span>| Repository:<a href="https://github.com/40823124/cd2021">40823124</a><span> </span>| Group Website:<a href="https://40823124.github.io/stage3-ag5">40823124</a></p>
+<p>40823139 | Website:<a href="https://40823139.github.io/cd2021">40823139</a><span> </span>| Repository:<a href="https://github.com/40823139/cd2021">40823139</a><span> </span>| Group Website:<a href="https://40823139.github.io/stage3-ag5">40823139</a></p>
+<p>40823126 | Website:<a href="https://40823126.github.io/cd2021">40823126</a><span> </span>| Repository:<a href="https://github.com/40823126/cd2021">40823126</a><span> </span>| Group Website:<a href="https://40823126.github.io/stage3-ag5">40823126</a></p>
+<p>stage3_ag6 |<span> </span><a href="https://40823152.github.io/stage3-ag6">網站</a><span> </span>|<span> </span><a href="https://github.com/40823152/stage3-ag6">倉儲</a></p>
+<p>40823152 | Website:<a href="https://40823152.github.io/cd2021">40823152</a><span> </span>| Repository:<a href="https://github.com/40823152/cd2021">40823152</a><span> </span>| Group Website:<a href="https://40823152.github.io/stage3-ag6">40823152</a></p>
+<p>40823110 | Website:<a href="https://40823110.github.io/cd2021">40823110</a><span> </span>| Repository:<a href="https://github.com/40823110/cd2021">40823110</a><span> </span>| Group Website:<a href="https://40823110.github.io/stage3-ag6">40823110</a></p>
+<p>40823122 | Website:<a href="https://40823122.github.io/cd2021">40823122</a><span> </span>| Repository:<a href="https://github.com/40823122/cd2021">40823122</a><span> </span>| Group Website:<a href="https://40823122.github.io/stage3-ag6">40823122</a></p>
+<p>40823125 | Website:<a href="https://40823125.github.io/cd2021">40823125</a><span> </span>| Repository:<a href="https://github.com/40823125/cd2021">40823125</a><span> </span>| Group Website:<a href="https://40823125.github.io/stage3-ag6">40823125</a></p>
+<p>40823117 | Website:<a href="https://40823117.github.io/cd2021">40823117</a><span> </span>| Repository:<a href="https://github.com/40823117/cd2021">40823117</a><span> </span>| Group Website:<a href="https://40823117.github.io/stage3-ag6">40823117</a></p>
+<p>40823129 | Website:<a href="https://40823129.github.io/cd2021">40823129</a><span> </span>| Repository:<a href="https://github.com/40823129/cd2021">40823129</a><span> </span>| Group Website:<a href="https://40823129.github.io/stage3-ag6">40823129</a></p>
+<p>40823149 | Website:<a href="https://40823149.github.io/cd2021">40823149</a><span> </span>| Repository:<a href="https://github.com/40823149/cd2021">40823149</a><span> </span>| Group Website:<a href="https://40823149.github.io/stage3-ag6">40823149</a></p>
+<p>40823153 | Website:<a href="https://40823153.github.io/cd2021">40823153</a><span> </span>| Repository:<a href="https://github.com/40823153/cd2021">40823153</a><span> </span>| Group Website:<a href="https://40823153.github.io/stage3-ag6">40823153</a></p>
+<p></p>
+<h2>Task2</h2>
+<p><strong>RemoteAPI</strong></p>
 <p>Python3 remote api 程式控制Coppeliasim 需要 <a href="https://raw.githubusercontent.com/CoppeliaRobotics/remoteApiBindings/master/python/python/sim.py">sim.py</a>, <a href="https://raw.githubusercontent.com/CoppeliaRobotics/remoteApiBindings/master/python/python/simConst.py">simConst.py</a> 與 <a href="https://github.com/CoppeliaRobotics/remoteApiBindings/tree/master/lib/lib/Windows">remoteApi.dll</a> 等三個檔案，將三個檔案與要操控的.py檔放在同一個資料夾中</p>
 <p><img alt="" height="742" src="/images/remote api.png" width="696"/></p>
 <p>將.py放入編譯器修改</p>
-<p></p><h1>Note</h1>
+<p><img alt="" height="916" src="/images/py.png" width="702"/></p>
+<h2>W13</h2>
+<p>為因應校方公告:</p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/cd2021/downloads/「嚴重特殊傳染性肺炎」疫情課程彈性處理事項_遠距教學公告_0515D(中英版本).pdf">「嚴重特殊傳染性肺炎」疫情課程彈性處理事項_遠距教學公告_0515D(中英版本).pdf</a></p>
+<p>5月17日至5月30日全校所有課程改採遠距教學.</p>
+<p>本課程將在 W13-W14 週採取同步線上模式上課, 請所有修課學員密切注意 <a href="https://gitter.im/mdecourse/cd2021">https://gitter.im/mdecourse/cd2021</a> 上之公告, 線上同步上課將採 OBS + Youtube 配合 <a href="https://meet.google.com">https://meet.google.com</a> 直播方式進行, 請各學員屆時必須事先登入 github 帳號與 @gm 電子郵箱帳號, 以便在課程直播網站上留言討論.</p>
+<p>同步直播課程進行過程將指定各組員針對課程內容進行直播操作, 負責直播學員必須即時將直播網址公布於 <a href="https://gitter.im/mdecourse/cd2021">https://gitter.im/mdecourse/cd2021</a>, 以便與其他學員及老師進行互動.</p>
+<p>課程同步直播時段將與上課時段相同, 每段直播中間的暫停時間將視實際情況決定.</p>
+<p></p>
+<p>本週小組同步直播</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/a8Uw1WOhCYk" title="YouTube video player" width="560"></iframe></p><h2>W14</h2>
+<h2>W15</h2>
+<h1>Note</h1>
 <h2>Upgrade pip</h2>
 <p>Install plugins(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
