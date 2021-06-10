@@ -374,7 +374,70 @@ acp "更新內容"
 <p>本週小組同步直播</p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/a8Uw1WOhCYk" title="YouTube video player" width="560"></iframe></p>
 <h2>W14</h2>
-<h3>gitlab</h3>
+<h3>MTB_Robot</h3>
+<p><strong>手臂程式:</strong></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+    corout=coroutine.create(coroutineMain)
+end
+  
+function sysCall_actuation()
+    if coroutine.status(corout)~='dead' then
+        local ok,errorMsg=coroutine.resume(corout)
+        if errorMsg then
+            error(debug.traceback(corout,errorMsg),2)
+        end
+    else
+        corout=coroutine.create(coroutineMain)
+    end
+end
+  
+function movCallback(config,vel,accel,handles)
+    for i=1,#handles,1 do
+        if sim.getJointMode(handles[i])==sim.jointmode_force and sim.isDynamicallyEnabled(handles[i]) then
+            sim.setJointTargetPosition(handles[i],config[i])
+        else  
+            sim.setJointPosition(handles[i],config[i])
+        end
+    end
+end
+  
+function moveToConfig(handles,maxVel,maxAccel,maxJerk,targetConf,enable)
+    local currentConf={}
+    for i=1,#handles,1 do
+        currentConf[i]=sim.getJointPosition(handles[i])
+        targetConf[i]=targetConf[i]*math.pi/180
+    end
+    sim.moveToConfig(-1,currentConf,nil,nil,maxVel,maxAccel,maxJerk,targetConf,nil,movCallback,handles)
+  
+    if enable then
+        sim.writeCustomDataBlock(gripperHandle,'activity','on')
+    else
+        sim.writeCustomDataBlock(gripperHandle,'activity','off')
+    end
+end
+  
+function coroutineMain()
+    modelBase=sim.getObjectHandle(sim.handle_self)
+    gripperHandle=sim.getObjectHandle('suctionPad')
+    modelName=sim.getObjectName(modelBase)
+    motorHandles = {}
+    for i=1,4,1 do
+        motorHandles[i]=sim.getObjectHandle('MTB_axis'..i)
+    end
+    local vel=60
+    local accel=10
+    local jerk=10
+    local maxVel={vel*math.pi/180,vel*math.pi/180,vel*math.pi/180,vel*math.pi/180}
+    local maxAccel={accel*math.pi/180,accel*math.pi/180,accel*math.pi/180,accel*math.pi/180}
+    local maxJerk={jerk*math.pi/180,jerk*math.pi/180,jerk*math.pi/180,jerk*math.pi/180}
+    moveToConfig(motorHandles,maxVel,maxAccel,maxJerk,{0,0,0,0},true)
+    moveToConfig(motorHandles,maxVel,maxAccel,maxJerk,{0,0,1.9,0},true)
+    moveToConfig(motorHandles,maxVel,maxAccel,maxJerk,{0,0,-1.9,0},true)
+    moveToConfig(motorHandles,maxVel,maxAccel,maxJerk,{-160,-43.5,0,203.5},false)
+    moveToConfig(motorHandles,maxVel,maxAccel,maxJerk,{160,43.5,0,203.5},false)
+    moveToConfig(motorHandles,maxVel,maxAccel,maxJerk,{160,43.5,1.90,-203.5},true)
+    moveToConfig(motorHandles,maxVel,maxAccel,maxJerk,{160,43.5,-1.90,-203.5},true)
+end</pre><h3>gitlab</h3>
 <div id="tipue_search_content">
 <h4>Gitlab 同步</h4>
 <p>要利用 Gitlab 同步位於 Github 上的 CMSiMDE 倉儲與 Github Pages 網頁, 需要注意以下兩個要點:</p>
@@ -397,8 +460,8 @@ acp "更新內容"
 </td>
 <td class="code" style="width: 168.267px;">
 <div class="container">
-<div class="line number2 index1 alt1">Y:\&gt;cd tmp/cd2021<br/>Y:\tmp\cd2021&gt;git push gitlab </div>
-<div class="line number1 index0 alt2"><code class="py plain">Y:\&gt;cd tmp/cd2021 Y:\tmp\cd2021&gt;git push gitlab  </code></div>
+<div class="line number1 index0 alt2"><code class="py plain">Y:\&gt;cd tmp/cd2021 </code></div>
+<div class="line number1 index0 alt2"><code class="py plain">Y:\tmp\cd2021&gt;git push gitlab  </code></div>
 </div>
 </td>
 </tr>
