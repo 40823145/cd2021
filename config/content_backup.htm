@@ -861,6 +861,9 @@ end</pre><h3>gitlab</h3>
 <p><strong></strong></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/hzmCVr7aOkQ" title="YouTube video player" width="560"></iframe></p>
 <h4>2. 建立 CoppeliaSim 4.1.0 MTB robot 場景</h4>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/nNmZYaL07yg" title="YouTube video player" width="560"></iframe></p>
+<p></p>
+<p>操作與講解:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function move(j1,j2,j3,j4)
     modelBase=sim.getObjectAssociatedWithScript(sim.handle_self)
     modelName=sim.getObjectName(modelBase)
@@ -890,6 +893,165 @@ end
 &lt;\pre&gt;</pre>
 <p></p>
 <h4>3. 手臂末端加入 components-gripper-suction pad 吸盤</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
+    axis1=sim.getObjectHandle('MTB_axis1')
+    axis2=sim.getObjectHandle('MTB_axis2')
+    axis3=sim.getObjectHandle('MTB_axis3')
+    axis4=sim.getObjectHandle('MTB_axis4')
+    mtb3=sim.getObjectHandle('MTB_link3')
+    suctionPad=sim.getObjectHandle('suctionPad')
+    BaseFrame=sim.getObjectHandle("BaseFrame")
+    block =sim.getObjectHandle("block")
+    deg1 = 0
+    deg2 = 0
+    distance3 = 0
+    modelBase=sim.getObjectHandle(sim.handle_self)
+    robotBase=modelBase
+    robotName='suctionPad'
+    deg = math.pi/180
+     
+end
+function sysCall_actuation() 
+    calibration = 0.0042
+    message, auxiliaryData=sim.getSimulatorMessage()
+        while message ~= -1 do
+            key=auxiliaryData[1]
+            sim.addStatusbarMessage('????? key:'..key)
+            if (message==sim.message_keypress) then
+            if (auxiliaryData[1]==112) then --p activate the suction pad
+                sim.setScriptSimulationParameter(sim.getScriptAssociatedWithObject(suctionPad),"active",'true')
+                end -- if p
+                if (auxiliaryData[1]==113) then --q deactivate the suction pad
+                sim.setScriptSimulationParameter(sim.getScriptAssociatedWithObject(suctionPad),'active','false')
+                end -- if q
+                if (auxiliaryData[1]==108) then --l 
+                     deg1 = deg1+0.4*deg
+                     sim.setJointPosition(axis1, deg1)
+                end -- if l
+                if (auxiliaryData[1]==114) then --r 
+                     deg1 =deg1-0.4*deg
+                     sim.setJointPosition(axis1, deg1)
+                end -- if r
+                 if (auxiliaryData[1]==103) then --g
+                     deg2 =deg2-0.4*deg
+                     sim.setJointPosition(axis2, deg2)
+                end -- if r
+                 if (auxiliaryData[1]==104) then --h 
+                     deg2 =deg2+0.4*deg
+                     sim.setJointPosition(axis2, deg2)
+                end -- if r
+                if (auxiliaryData[1]==100) then --d 
+                     distance3 = distance3 + 0.03 + calibration
+                     sim.setJointPosition(axis3, distance3)
+                end -- if d
+                if (auxiliaryData[1]==117) then --u
+                     distance3 = distance3 - 0.03 - calibration
+                     sim.setJointPosition(axis3, distance3)
+                end -- if u
+                if (auxiliaryData[1]==98) then --b
+                     deg1 =0
+                     deg2 =0
+                     sim.setJointPosition(axis1, deg1)
+                     sim.setJointPosition(axis2, deg2)
+                end -- if b
+           end  -- if
+    message, auxiliaryData=sim.getSimulatorMessage()
+        end -- while
+end -- function
+</pre>
+<p>吸盤程式:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
+    s=sim.getObjectHandle('suctionPadSensor')
+    l=sim.getObjectHandle('suctionPadLoopClosureDummy1')
+    l2=sim.getObjectHandle('suctionPadLoopClosureDummy2')
+    b=sim.getObjectHandle('suctionPad')
+    suctionPadLink=sim.getObjectHandle('suctionPadLink')
+ 
+    infiniteStrength=sim.getScriptSimulationParameter(sim.handle_self,'infiniteStrength')
+    maxPullForce=sim.getScriptSimulationParameter(sim.handle_self,'maxPullForce')
+    maxShearForce=sim.getScriptSimulationParameter(sim.handle_self,'maxShearForce')
+    maxPeelTorque=sim.getScriptSimulationParameter(sim.handle_self,'maxPeelTorque')
+ 
+    sim.setLinkDummy(l,-1)
+    sim.setObjectParent(l,b,true)
+    m=sim.getObjectMatrix(l2,-1)
+    sim.setObjectMatrix(l,-1,m)
+end
+ 
+function sysCall_cleanup() 
+--[[
+    sim.setLinkDummy(l,-1)
+    sim.setObjectParent(l,b,true)
+    m=sim.getObjectMatrix(l2,-1)
+    sim.setObjectMatrix(l,-1,m)
+]]--
+end
+ 
+function sysCall_sensing() 
+    parent=sim.getObjectParent(l)
+    if (sim.getScriptSimulationParameter(sim.handle_self,'active')==false) then
+        if (parent~=b) then
+            sim.setLinkDummy(l,-1)
+            sim.setObjectParent(l,b,true)
+            m=sim.getObjectMatrix(l2,-1)
+            sim.setObjectMatrix(l,-1,m)
+        end
+    else
+        if (parent==b) then
+            -- Here we want to detect a respondable shape, and then connect to it with a force sensor (via a loop closure dummy dummy link)
+            -- However most respondable shapes are set to "non-detectable", so "sim.readProximitySensor" or similar will not work.
+            -- But "sim.checkProximitySensor" or similar will work (they don't check the "detectable" flags), but we have to go through all shape objects!
+            index=0
+            while true do
+                shape=sim.getObjects(index,sim.object_shape_type)
+                if (shape==-1) then
+                    break
+                end
+                if (shape~=b) and (sim.getObjectInt32Parameter(shape,sim.shapeintparam_respondable)~=0) and (sim.checkProximitySensor(s,shape)==1) then
+                    -- Ok, we found a respondable shape that was detected
+                    -- We connect to that shape:
+                    -- Make sure the two dummies are initially coincident:
+                    sim.setObjectParent(l,b,true)
+                    m=sim.getObjectMatrix(l2,-1)
+                    sim.setObjectMatrix(l,-1,m)
+                    -- Do the connection:
+                    sim.setObjectParent(l,shape,true)
+                    sim.setLinkDummy(l,l2)
+                    break
+                end
+                index=index+1
+            end
+        else
+            -- Here we have an object attached
+            if (infiniteStrength==false) then
+                -- We might have to conditionally beak it apart!
+                result,force,torque=sim.readForceSensor(suctionPadLink) -- Here we read the median value out of 5 values (check the force sensor prop. dialog)
+                if (result&gt;0) then
+                    breakIt=false
+                    if (force[3]&gt;maxPullForce) then breakIt=true end
+                    sf=math.sqrt(force[1]*force[1]+force[2]*force[2])
+                    if (sf&gt;maxShearForce) then breakIt=true end
+                    if (torque[1]&gt;maxPeelTorque) then breakIt=true end
+                    if (torque[2]&gt;maxPeelTorque) then breakIt=true end
+                    if (breakIt) then
+                        -- We break the link:
+                        sim.setLinkDummy(l,-1)
+                        sim.setObjectParent(l,b,true)
+                        m=sim.getObjectMatrix(l2,-1)
+                        sim.setObjectMatrix(l,-1,m)
+                    end
+                end
+            end
+        end
+    end
+    if (sim.getSimulationState()==sim.simulation_advancing_lastbeforestop) then
+        sim.setLinkDummy(l,-1)
+        sim.setObjectParent(l,b,true)
+        m=sim.getObjectMatrix(l2,-1)
+        sim.setObjectMatrix(l,-1,m)
+    end
+end
+</pre>
 <p></p>
 <h4>4. 逆向運動學函式</h4>
 <p></p>
