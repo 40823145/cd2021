@@ -861,38 +861,16 @@ end</pre><h3>gitlab</h3>
 <p><strong></strong></p>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/hzmCVr7aOkQ" title="YouTube video player" width="560"></iframe></p>
 <h4>2. 建立 CoppeliaSim 4.1.0 MTB robot 場景</h4>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/nNmZYaL07yg" title="YouTube video player" width="560"></iframe></p>
-<p></p>
+<p><a href="https://drive.google.com/file/d/1DQWasD-nxStrNwg4v8xdfOwYU5pN854H/view?usp=sharing">MTB_1.ttt</a></p>
+<p><a href="https://drive.google.com/file/d/1BXgi-UzZ2foRu3R4Axa9xOAycib7u0Rt/view?usp=sharing">MTB_1.lua</a></p>
 <p>操作與講解:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function move(j1,j2,j3,j4)
-    modelBase=sim.getObjectAssociatedWithScript(sim.handle_self)
-    modelName=sim.getObjectName(modelBase)
-    jointHandle={}
-    j={j1*math.pi/180,j2*math.pi/180,j3*math.pi/180,j4*math.pi/180}
-    for i=1,4,1 do
-        jointHandle[i]=sim.getObjectHandle('MTB_axis'..i)
-        sim.wait(1)
-    end
-    for i=1,4,1 do
-        sim.setJointPosition(jointHandle[i],j[i])
-        sim.wait(1)
-    end
-     
-end
- 
-function sysCall_threadmain()
-    move(0,0,0,0)
-    move(30,30,0,0)
-    move(60,60,0.5,0)
-    move(0,0,0,30)
-    move(30,0,0,0)
-    move(0,0,0,0)
-     
-     
-end
-&lt;\pre&gt;</pre>
-<p></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/nNmZYaL07yg" title="YouTube video player" width="560"></iframe></p>
 <h4>3. 手臂末端加入 components-gripper-suction pad 吸盤</h4>
+<p><a href="https://drive.google.com/file/d/1Xg3hFBM06d1Wup6Z8hokwG-29N9UckK4/view?usp=sharing">W16_keyboard.ttt</a></p>
+<p><a href="https://drive.google.com/file/d/1AoFoHapw8UpG13UqYt9cuEGJ26Z4bYz4/view?usp=sharing">mtb_w16b.lua </a></p>
+<p><a href="https://drive.google.com/file/d/1i3_j2ctJLGRl4_byYJTxMzP0LvWruFSk/view?usp=sharing">mtb_w16s.lua</a></p>
+<p>操作與講解:</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VS6zAueCZhc" title="YouTube video player" width="560"></iframe></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
     axis1=sim.getObjectHandle('MTB_axis1')
     axis2=sim.getObjectHandle('MTB_axis2')
@@ -1054,8 +1032,13 @@ end
 </pre>
 <p></p>
 <h4>4. 逆向運動學函式</h4>
-<p></p>
-<h4>5. Python remote API 逆向運動學函式</h4><h1>Note</h1>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/YYRgW5AM-Tk" title="YouTube video player" width="560"></iframe></p>
+<p>操作與講解:</p>
+<p><span>根據 W15 課程內容之 Inverse Kinematics 方程式 (</span><a href="https://www.youtube.com/watch?v=IKOGwoJ2HLk&amp;t=35s">影片1</a><span> 或</span><a href="https://www.youtube.com/watch?v=eIZuz1XCd0w&amp;t=183s">影片2</a><span>)，使用(0.2, 0.7, 0.05) 與 (-0.3, -0.55, 0.05)計算出角度</span></p>
+<p><span>(0.2, 0.7, 0.05)</span></p>
+<p><span>(-0.3, -0.55, 0.05)</span></p>
+<h4>5. Python remote API 逆向運動學函式</h4>
+<p>操作與講解:</p><h1>Note</h1>
 <h2>Upgrade pip</h2>
 <p>Install plugins(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
@@ -1108,4 +1091,5 @@ leo
 <h1>Code</h1>
 <p>github .stl 3D viewer</p>
 <p><span style="color: #999999;">&lt;script src="https://embed.github.com/view/3d/檔案位置"&gt;&lt;/script&gt;</span></p>
-<h1>test</h1>
+<h1>FreeCAD test</h1>
+<p><a href="https://drive.google.com/drive/folders/1bjRzWbERGyRVyARg-0VjK5gV_S8wS1Fu?usp=sharing">FreeCAD可攜版</a></p>
