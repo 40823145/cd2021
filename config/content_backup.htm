@@ -858,7 +858,42 @@ end</pre><h3>gitlab</h3>
 <p><strong><a href="https://cad.onshape.com/documents/1c210cbbd5dc30350b3ac3ae/w/db94fe543d28fd26a9844609/e/f88f001aa4056e8ace02119a">MTB_link2</a></strong></p>
 <p><strong><a href="https://cad.onshape.com/documents/232ae119c2ea455bb2bdeee9/w/7bb3191473b3f7f9f16d6961/e/e3285c85463406bb77e2067b">MTB_link3</a></strong></p>
 <p><strong><a href="https://cad.onshape.com/documents/bf1243586f9c5895f88072d9/w/f940124f432c71a27804e8fa/e/da6276b77fb23a9dde5caf20">組合</a></strong></p>
-<p><strong></strong></p><h1>Note</h1>
+<p><strong></strong></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/hzmCVr7aOkQ" title="YouTube video player" width="560"></iframe></p>
+<h4>2. 建立 CoppeliaSim 4.1.0 MTB robot 場景</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function move(j1,j2,j3,j4)
+    modelBase=sim.getObjectAssociatedWithScript(sim.handle_self)
+    modelName=sim.getObjectName(modelBase)
+    jointHandle={}
+    j={j1*math.pi/180,j2*math.pi/180,j3*math.pi/180,j4*math.pi/180}
+    for i=1,4,1 do
+        jointHandle[i]=sim.getObjectHandle('MTB_axis'..i)
+        sim.wait(1)
+    end
+    for i=1,4,1 do
+        sim.setJointPosition(jointHandle[i],j[i])
+        sim.wait(1)
+    end
+     
+end
+ 
+function sysCall_threadmain()
+    move(0,0,0,0)
+    move(30,30,0,0)
+    move(60,60,0.5,0)
+    move(0,0,0,30)
+    move(30,0,0,0)
+    move(0,0,0,0)
+     
+     
+end
+&lt;\pre&gt;</pre>
+<p></p>
+<h4>3. 手臂末端加入 components-gripper-suction pad 吸盤</h4>
+<p></p>
+<h4>4. 逆向運動學函式</h4>
+<p></p>
+<h4>5. Python remote API 逆向運動學函式</h4><h1>Note</h1>
 <h2>Upgrade pip</h2>
 <p>Install plugins(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
