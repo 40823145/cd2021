@@ -131,9 +131,9 @@ while robot.step(TIME_STEP) != -1:
 <p></p>
 <p><iframe height="580" src="https://drive.google.com/file/d/1VTZRCIs_ifjLimdZAVUOUr5o4abNILUg/preview" width="640"></iframe></p><h1>stage2-ag1</h1>
 <p>分組專題成員：</p>
-<p>第一位成員：<a href="https://github.com/a40823112/cd2021">a408231112</a> (組長)</p>
-<p><span></span><span>Website: <a href="https://a40823112.github.io/stage2-ag1/content/index.html">a40823112 Stage2-ag1 Website</a></span></p>
-<p><span>Reveal: <a href="https://a40823112.github.io/stage2-ag1/reveal/index.html#/">a40823112 Stage2-ag1 Reveal</a></span></p>
+<p>第一位成員：<a href="https://github.com/a40823112/cd2021">408231112</a> (組長)</p>
+<p><span></span><span>Website: <a href="https://a40823112.github.io/stage2-ag1/content/index.html">40823112 Stage2-ag1 Website</a></span></p>
+<p><span>Reveal: <a href="https://a40823112.github.io/stage2-ag1/reveal/index.html#/">40823112 Stage2-ag1 Reveal</a></span></p>
 <p><span> 第二位成員：<a href="https://github.com/40823108/cd2021">40823108</a> (組員)</span></p>
 <p><span>Website: <a href="https://40823108.github.io/stage2-ag1/content/index.html">40823108 Stage2-ag1 Website</a></span></p>
 <p><span>Reveal: <a href="https://40823108.github.io/stage2-ag1/reveal/index.html#/">40823108 Stage2-ag1 Reveal</a></span></p>
@@ -145,10 +145,14 @@ while robot.step(TIME_STEP) != -1:
 <p><strong>專題項目:經討論決定Stage2的項目，為Stage1-ag1的改良，並增加其它功能:</strong></p>
 <p><strong>1.利用鍵盤方向鍵操控</strong></p>
 <p><strong>2.增加接近傳感器使產品自動行走時，不會撞到障礙物</strong></p>
-<p>W5</p>
 <p>本次圖檔沿用Stage1，改使用Coppeliasim，透過lua程式編寫<iframe frameborder="0" height="420" src="https://render.githubusercontent.com/view/3d?url=https://raw.githubusercontent.com/40823108/cd2021/main/EV3-Ontology-1.0.stl" title="EV3-Ontology-1.0.stl" width="620"></iframe></p>
-<p>lua程式:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
+<p><strong>W5</strong></p>
+<p><em><img alt="" height="471" src="/images/EV3-6.jpg" width="837"/></em></p>
+<p>本次專案沿用stage1-ag1之專案，為了讓模型能夠按照我們的意思做動，我們嘗試編寫Lua程式並以方向鍵進行控制。</p>
+<p>下方為第一次測試程式與模擬圖</p>
+<p><img alt="" height="536" src="/images/EV3-12.jpg" width="953"/></p>
+<p><strong>Lua程式:</strong></p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
     -- put your actuation code here
  while sim.getSimulationState()~=sim.simulation_advancing_abouttostop do
     -- Read the keyboard messages (make sure the focus is on the main window, scene view):
@@ -202,8 +206,300 @@ if (auxiliaryData[1]==2007) then
         Shape4 = 0
         Shape7 = 0
 end</pre>
+<p><span>因部分語法有誤，日後待除錯。</span></p><p><strong>W6</strong></p>
 <p></p>
-<p>W6</p><h1>stage3-ag1</h1>
+<p>經過一週的時間，我們將程式進行了修改，但還是有錯誤，無法讓機構以上下左右鍵的方式進行控制。</p>
+<p>下方為模擬圖:</p>
+<p><img alt="" height="960" src="/images/EV3-13.jpg" width="1706"/></p>
+<p><span>第二次Lua程式測試:</span></p>
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+    -- do some initialization here
+    left_front_handle= sim.getObjectHandle('left_front')
+    left_back_handle= sim.getObjectHandle('left_back')
+    right_back_handle= sim.getObjectHandle('right_back')
+    right_front_handle= sim.getObjectHandle('right_front')
+     
+    joint_1_handle= sim.getObjectHandle('joint_1')
+     
+    joint_2_handle= sim.getObjectHandle('joint_2')
+    MaxVel=10
+    leftvelocity=0
+    rightvelocity=0
+    dVel=0.5;
+    --sim.setJointTargetVelocity(left_front_handle,leftvelocity)
+    sim.setJointTargetVelocity(left_back_handle,leftvelocity)
+    sim.setJointTargetVelocity(right_back_handle,rightvelocity)
+    --sim.setJointTargetVelocity(right_front_handle,rightvelocity)
+end
+ 
+function sysCall_actuation()
+    -- put your actuation code here
+    message,auxiliaryData=sim.getSimulatorMessage()
+    while message~=-1 do
+        if (message==sim.message_keypress) then
+            if (auxiliaryData[1]==32) then
+                -- right key
+                leftvelocity=0
+                rightvelocity=0
+                sim.setJointForce(left_front_handle, 0)
+                sim.setJointForce(left_back_handle, 0)
+                sim.setJointForce(right_back_handle, 0)
+                sim.setJointForce(right_front_handle, 0)
+                 
+                 
+                sim.setJointForce(joint_1_handle, 1000)
+                 
+                sim.setJointForce(joint_2_handle, 1000)
+                break
+            else
+            --sim.setJointForce(left_front_handle, 10000)
+            sim.setJointForce(left_back_handle, 10000)
+            sim.setJointForce(right_back_handle, 10000)
+            --sim.setJointForce(right_front_handle, 10000)
+             
+            sim.setJointForce(joint_1_handle, 0)
+             
+            sim.setJointForce(joint_2_handle, 0)
+            end
+            if (auxiliaryData[1]==2007) then
+                -- up key
+                leftvelocity=(leftvelocity+rightvelocity)/2
+                rightvelocity=leftvelocity
+                leftvelocity=leftvelocity+dVel
+                rightvelocity=rightvelocity+dVel
+            end
+            if (auxiliaryData[1]==2008) then
+                -- down key
+                leftvelocity=(leftvelocity+rightvelocity)/2
+                rightvelocity=leftvelocity
+                leftvelocity=leftvelocity-dVel
+                rightvelocity=rightvelocity-dVel
+            end
+            if (auxiliaryData[1]==2009) then
+                -- left key
+                leftvelocity=leftvelocity-dVel
+                rightvelocity=rightvelocity+dVel
+            end
+            if (auxiliaryData[1]==2010) then
+                -- right key
+                leftvelocity=leftvelocity+dVel
+                rightvelocity=rightvelocity-dVel
+            end
+        end
+        message,auxiliaryData=sim.getSimulatorMessage()
+    end
+     
+    if leftvelocity&gt;MaxVel then
+        leftvelocity=MaxVel
+    end
+    if leftvelocity&lt;-MaxVel then
+        leftvelocity=-MaxVel
+    end
+     
+    if rightvelocity&gt;MaxVel then
+                rightvelocity=MaxVel
+    end
+    if rightvelocity&lt;-MaxVel then
+                rightvelocity=-MaxVel
+    end
+     
+    --sim.setJointTargetVelocity(left_front_handle,leftvelocity)
+    sim.setJointTargetVelocity(left_back_handle,leftvelocity)
+    sim.setJointTargetVelocity(right_back_handle,rightvelocity)
+    --sim.setJointTargetVelocity(right_front_handle,rightvelocity)
+     
+end
+ 
+function sysCall_sensing()
+    -- put your sensing code here
+end
+ 
+function sysCall_cleanup()
+    -- do some clean-up here
+end
+ 
+-- See the user manual or the available code snippets for additional callback functions and details</pre>
+<p><span>第二次程式失敗，日後將持續進除錯。</span></p>
+<p><span></span></p>
+<p></p><p><strong>W7</strong></p>
+<p><strong>利用鍵盤操控物體行走</strong></p>
+<p><strong><img alt="" height="1040" src="/images/EV3-14.gif" width="1920"/></strong></p>
+<p>(<span>🔽程式碼</span>)</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init() 
+    left_handle= sim.getObjectHandle('left_m')
+    right_handle= sim.getObjectHandle('right_m')
+    MaxVel=2
+    leftvelocity=0
+    rightvelocity=0
+    dVel=0.5;
+    sim.setJointTargetVelocity(left_handle,leftvelocity)
+    sim.setJointTargetVelocity(right_handle,rightvelocity)
+end
+
+function sysCall_actuation() 
+    message,auxiliaryData=sim.getSimulatorMessage()
+    while message~=-1 do
+        if (message==sim.message_keypress) then
+            if (auxiliaryData[1]==32) then
+                -- right key
+                leftvelocity=0
+                rightvelocity=0
+                sim.setJointForce(left_front_handle, 0)
+                sim.setJointForce(right_front_handle, 0)
+                break
+            else
+                sim.setJointForce(left_handle, 10000)
+                sim.setJointForce(right_handle, 10000)
+            end
+            if (auxiliaryData[1]==2007) then
+                -- up key
+                leftvelocity=(leftvelocity+rightvelocity)/2
+                rightvelocity=leftvelocity
+                leftvelocity=leftvelocity+dVel
+                rightvelocity=rightvelocity+dVel
+            end
+            if (auxiliaryData[1]==2008) then
+                -- down key
+                leftvelocity=(leftvelocity+rightvelocity)/2
+                rightvelocity=leftvelocity
+                leftvelocity=leftvelocity-dVel
+                rightvelocity=rightvelocity-dVel
+            end
+            if (auxiliaryData[1]==2009) then
+                -- left key
+                leftvelocity=leftvelocity-dVel
+                rightvelocity=rightvelocity+dVel
+            end
+            if (auxiliaryData[1]==2010) then
+                -- right key
+                leftvelocity=leftvelocity+dVel
+                rightvelocity=rightvelocity-dVel
+            end
+        end
+        message,auxiliaryData=sim.getSimulatorMessage()
+    end
+    
+    if leftvelocity&gt;MaxVel then
+        leftvelocity=MaxVel
+    end
+    if leftvelocity&lt;-MaxVel then
+        leftvelocity=-MaxVel
+    end
+    
+    if rightvelocity&gt;MaxVel then
+                rightvelocity=MaxVel
+    end
+    if rightvelocity&lt;-MaxVel then
+                rightvelocity=-MaxVel
+    end
+    
+    sim.setJointTargetVelocity(left_handle,leftvelocity)
+    sim.setJointTargetVelocity(right_handle,rightvelocity)
+    
+end </pre>
+<p><strong><mark><img alt="" height="302" src="/images/方向鍵模擬.gif" width="600"/></mark></strong></p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"><!---maxvel--><!---maxvel--></pre><p><strong>模擬問題與排解</strong></p>
+<p><strong>問題:</strong> 當本體開啟運動模擬時會產生錯誤，導致產品解體</p>
+<p><img alt="" height="325" src="/images/HnHbWHruYE.gif" width="600"/></p>
+<p><strong></strong></p>
+<p><strong>問題原因:</strong> 討論後發現，產品的模擬干涉太多使其無法正常運作，原因是產品的輪子跟球體上並不是完整的圓，而是由許多正方形的小格子所構成，所以在模擬時產生過多的干涉影響電腦正常模擬，因而模擬錯誤。</p>
+<p><img alt="" height="523" src="/images/輪子改善.jpg" width="600"/></p>
+<p><strong></strong></p>
+<p><strong>問題排解:</strong><span><span> 在coppeliasim內 add-&gt;primitive shape-&gt;Cylinder 增添簡化圖形來代替原本的車輪，而原本的輪子就做為Disc的造型。</span></span></p>
+<p><span><span><img alt="" height="392" src="/images/w7改善.jpg" width="400"/></span></span></p>
+<p><span><span><img alt="" height="125" src="/images/w7改善排列.jpg" width="200"/></span></span></p>
+<p><span><span><img alt="" height="701" src="/images/w7改善skin.jpg" width="600"/></span></span></p><p><strong>W8 Sensor Control</strong></p>
+<p><strong>增加接近傳感器使產品自動行走時，不會撞到障礙物</strong></p>
+<p>(<span>🔽程式碼</span>)</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">function sysCall_init()
+    
+    
+end
+
+function sysCall_actuation()
+    
+end
+
+function sysCall_sensing()
+    
+end
+
+function sysCall_cleanup()
+    
+end
+
+
+
+function sysCall_afterDelete(inData)
+    for key,value in pairs(inData.objectHandles) do
+        print("Object with handle "..key.." was deleted")
+    end
+    
+end
+
+function sysCall_afterCreate(inData)
+    for key,value in pairs(inData.objectHandles) do
+        print("Object with handle "..value.." was created")
+    end
+end
+--]]
+function speedChange_callback(ui,id,newVal)
+    speed=minMaxSpeed[1]+(minMaxSpeed[2]-minMaxSpeed[1])*newVal/100
+end
+
+function sysCall_init()
+    
+    bubbleRobBase=sim.getObjectAssociatedWithScript(sim.handle_self) 
+    leftMotor=sim.getObjectHandle("bubbleRob_leftMotor") 
+    rightMotor=sim.getObjectHandle("bubbleRob_rightMotor") 
+    noseSensor=sim.getObjectHandle("bubbleRob_sensingNose") 
+    minMaxSpeed={120*math.pi/180,300*math.pi/180} 
+    backUntilTime=-1 
+   
+        xml = '<ui activate="false" closeable="false" resizeable="false" title="'..sim.getObjectName(bubbleRobBase)..' speed">'..[[
+        <hslider id="1" maximum="100" minimum="0" onchange="speedChange_callback"></hslider>
+        <label style="* {margin-left: 300px;" text=""></label>
+        </ui>
+        ]]
+    ui=simUI.create(xml)
+    speed=(minMaxSpeed[1]+minMaxSpeed[2])*1
+    simUI.setSliderValue(ui,1,100*(speed-minMaxSpeed[1])/(minMaxSpeed[2]-minMaxSpeed[1]))
+end
+
+function sysCall_actuation()
+    result=sim.readProximitySensor(noseSensor) 
+    
+    if (result&gt;0) then backUntilTime=sim.getSimulationTime()+4 end 
+
+    if (backUntilTime&lt;sim.getSimulationTime()) then
+        
+        sim.setJointTargetVelocity(leftMotor,speed)
+        sim.setJointTargetVelocity(rightMotor,speed)
+    else
+        
+        sim.setJointTargetVelocity(leftMotor,-speed/5)
+        sim.setJointTargetVelocity(rightMotor,-speed/200)
+    end
+end
+
+function sysCall_cleanup()
+	simUI.destroy(ui)
+end
+</pre>
+<p><img alt="" height="302" src="/images/障礙物模擬.gif" width="600"/></p><p><strong>Sensor模擬問題與排解</strong></p>
+<p><strong>問題:</strong>程式與感測器都確認無誤後，卻還是無法做動。</p>
+<p><img alt="" height="302" src="/images/感測無法做動.gif" width="600"/></p>
+<p></p>
+<p><strong>問題原因:</strong>與組員討論後發現，<span>感測器都沒有發生問題，不會做動的原因是程式打錯才無法驅動馬達。</span></p>
+<p></p>
+<p><strong>問題排解:</strong>更改產品物件的程式碼即可。</p><p><strong>W9</strong></p>
+<p>程式模擬影片與PDF報告</p>
+<p><strong>方向鍵控制模擬</strong></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/7jbkQGgWKrI" title="YouTube video player" width="560"></iframe></p>
+<p><strong>感測器模擬</strong></p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/7FvVDsfVPIU" title="YouTube video player" width="560"></iframe></p>
+<p><strong>PDF報告</strong></p>
+<p><iframe height="550" src="https://drive.google.com/file/d/1wedmypm9So7cyReRNaWF2WhBN8PPUgsP/preview" width="1000"></iframe></p><h1>stage3-ag1</h1>
 <h2>Task1</h2>
 <p>讀取 stage3_2a.txt, 建立 Stage3 的分組倉儲, 分組網頁, 以及各組員倉儲及網頁連結.</p>
 <p>已知<span> </span><a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">stage3_2a.txt</a><span>內容, 以及初步資料讀取程式:</span></p>
