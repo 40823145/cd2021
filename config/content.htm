@@ -78,9 +78,132 @@ cms
 acp "更新內容"
 </pre>
 <p><img alt="" height="638" src="/images/acp.png" width="1223"/></p>
-<h3>Webot basic operation</h3>
+<h1>Stage1-ag1</h1>
+<p>分組專題成員：</p>
+<p>第一位成員學號：<a href="https://github.com/40823145/cd2021">40823145</a> (組長)</p>
+<p><span>Warehouse: <a href="https://github.com/40823145/stage1-ag1">40823145 Stage1-ag1 Warehouse</a></span></p>
+<p><span>Website: <a href="https://40823145.github.io/stage1-ag1/content/index.html">40823145 Stage1-ag1 Website</a></span></p>
+<p><span>Reveal: <a href="https://40823145.github.io/stage1-ag1/reveal/index.html#/">40823145 Stage1-ag1 Reveal</a></span></p>
+<p><span>第二位成員學生：<a href="https://github.com/40823108/cd2021">40823108</a> (組員)</span></p>
+<p><span>Warehouse: <a href="https://40823108.github.io/stage1-ag1/content/index.html">40823108 Stage1-ag1 Warehouse</a></span></p>
+<p><span>Website:<span> </span><a href="https://github.com/40823108/stage1-ag1">40823108 Stage1-ag1 Website</a></span></p>
+<p><span>Reveal: <a href="https://40823108.github.io/cd2021/reveal/index.html#/">40823108 Stage1-ag1 Reveal</a></span></p>
+<h4>專題項目:EV3避障車</h4>
+<h4>Webot basic operation:</h4>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/03QbjQsOLUE" width="560"></iframe></p>
-<h1>stage3</h1>
+<h4>Python避障:</h4>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/vWNkJMrr3b0" title="YouTube video player" width="560"></iframe></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">from controller import Robot
+
+TIME_STEP = 1
+robot = Robot()
+ds = []
+dsNames = ['ds_right', 'ds_left', 'ds_in']
+for i in range(3):
+    ds.append(robot.getDevice(dsNames[i]))
+    ds[i].enable(TIME_STEP)
+wheels = []
+wheelsNames = ['wheel1', 'wheel2', 'wheel3', 'wheel4']
+for i in range(4):
+    wheels.append(robot.getDevice(wheelsNames[i]))
+    wheels[i].setPosition(float('inf'))
+    wheels[i].setVelocity(0.0)
+avoidObstacleCounter = 0
+while robot.step(TIME_STEP) != -1:
+    leftSpeed = 10.0
+    rightSpeed = 10.0
+    if avoidObstacleCounter &gt; 0:
+        avoidObstacleCounter -= 1
+        leftSpeed = 1.0
+        rightSpeed = -1.0
+    else:  # read sensors
+        for i in range(3):
+            if ds[i].getValue() &lt; 900.0:
+                avoidObstacleCounter = 90
+    wheels[0].setVelocity(leftSpeed)
+    wheels[1].setVelocity(rightSpeed)
+    wheels[2].setVelocity(leftSpeed)
+    wheels[3].setVelocity(rightSpeed)</pre>
+<p>STL圖檔</p>
+<p><iframe frameborder="0" height="420" src="https://render.githubusercontent.com/view/3d?url=https://raw.githubusercontent.com/40823108/cd2021/main/EV3-Ontology-1.0.stl" title="EV3-Ontology-1.0.stl" width="620"></iframe></p>
+<h4>遇到問題:</h4>
+<p>將EV3 STL黨匯入webots，全部的零件會變成整塊實體，所以將需要做動的輪胎部分先拆除，在webots中重建，但在webots中重建的輪胎顯示不出來，問題尚在解決當中</p>
+<p></p>
+<p><iframe height="580" src="https://drive.google.com/file/d/1VTZRCIs_ifjLimdZAVUOUr5o4abNILUg/preview" width="640"></iframe></p><h1>stage2-ag1</h1>
+<p>分組專題成員：</p>
+<p>第一位成員：<a href="https://github.com/a40823112/cd2021">a408231112</a> (組長)</p>
+<p><span></span><span>Website: <a href="https://a40823112.github.io/stage2-ag1/content/index.html">a40823112 Stage2-ag1 Website</a></span></p>
+<p><span>Reveal: <a href="https://a40823112.github.io/stage2-ag1/reveal/index.html#/">a40823112 Stage2-ag1 Reveal</a></span></p>
+<p><span> 第二位成員：<a href="https://github.com/40823108/cd2021">40823108</a> (組員)</span></p>
+<p><span>Website: <a href="https://40823108.github.io/stage2-ag1/content/index.html">40823108 Stage2-ag1 Website</a></span></p>
+<p><span>Reveal: <a href="https://40823108.github.io/stage2-ag1/reveal/index.html#/">40823108 Stage2-ag1 Reveal</a></span></p>
+<p><span>第三位成員：<a href="https://github.com/40823109/cd2021">40823109</a><span> (組員)</span></span></p>
+<p><span>Website: <a href="https://40823109.github.io/stage2-ag1/content/index.html">40823109 Stage2-ag1 Website</a></span></p>
+<p><span>第四位成員：<a href="https://github.com/40823145/cd2021">408231045</a><span> (組員)</span></span></p>
+<p><span>Website: <a href="https://40823145.github.io/stage2-ag1/content/index.html">40823145 Stage2-ag1 Website</a></span></p>
+<p><span>Reveal: <a href="https://40823145.github.io/stage2-ag1/reveal/index.html#/">40823145 Stage2-ag1 Reveal</a></span></p>
+<p><strong>專題項目:經討論決定Stage2的項目，為Stage1-ag1的改良，並增加其它功能:</strong></p>
+<p><strong>1.利用鍵盤方向鍵操控</strong></p>
+<p><strong>2.增加接近傳感器使產品自動行走時，不會撞到障礙物</strong></p>
+<p>W5</p>
+<p>本次圖檔沿用Stage1，改使用Coppeliasim，透過lua程式編寫<iframe frameborder="0" height="420" src="https://render.githubusercontent.com/view/3d?url=https://raw.githubusercontent.com/40823108/cd2021/main/EV3-Ontology-1.0.stl" title="EV3-Ontology-1.0.stl" width="620"></iframe></p>
+<p>lua程式:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">threadFunction=function()
+    -- put your actuation code here
+ while sim.getSimulationState()~=sim.simulation_advancing_abouttostop do
+    -- Read the keyboard messages (make sure the focus is on the main window, scene view):
+        message,auxiliaryData=sim.getSimulatorMessage()
+        while message~=-1 do
+            if (message==sim.message_keypress) then
+if (auxiliaryData[1]==2007) then
+                -- up key
+                velocity=1000
+                torque=10000
+                Shape4 = 1000
+                Shape7 = 1000
+            end
+            if (auxiliaryData[1]==2008) then
+                -- down key
+                velocity=1000
+                torque=10000
+                Shape4 = 1000
+                Shape7 = 1000
+            end
+            if (auxiliaryData[1]==2009) then
+                -- left key
+                velocity=1000
+                torque=10000
+                Shape4 = 1000
+                Shape7 = 1000
+            end
+            if (auxiliaryData[1]==2010) then
+                -- right key
+                velocity=1000
+                torque=10000
+                Shape4 = 1000
+                Shape7 = 1000
+            end
+        end
+        message,auxiliaryData=sim.getSimulatorMessage()
+    end
+    if Shape4 == 1
+        then sim.setJointPosition(joint_1, 1000, orientation)
+    if Shape7 == 1
+        then sim.setJointPosition(joint_2, 1000, orientation)
+    end
+        sim.setJointTargetVelocity(joint,velocity)
+    end
+        joint_1=sim.getObjectHandle('joint_1')
+        joint_2=sim.getObjectHandle('joint_2')
+        Shape4=sim.getObjectHandle('Shape4')
+        Shape7=sim.getObjectHandle('Shape7')
+        velocity=0
+        torque=0
+        Shape4 = 0
+        Shape7 = 0
+end</pre>
+<p></p>
+<p>W6</p><h1>stage3-ag1</h1>
 <h2>Task1</h2>
 <p>讀取 stage3_2a.txt, 建立 Stage3 的分組倉儲, 分組網頁, 以及各組員倉儲及網頁連結.</p>
 <p>已知<span> </span><a href="http://mde.tw/cd2021/downloads/stage3/stage3_2a.txt">stage3_2a.txt</a><span>內容, 以及初步資料讀取程式:</span></p>
@@ -564,7 +687,8 @@ while idTake &gt;= 0:
     robot.MoveJ(target_app_frame)
  
 # Move home when the robot finishes
-robot.MoveJ([0,0,0,0,10,-200])</pre><h2>W14</h2>
+robot.MoveJ([0,0,0,0,10,-200])</pre>
+<h2>W14</h2>
 <h3>MTB_Robot</h3>
 <p>1</p>
 <p><strong>手臂程式:</strong></p>
@@ -713,7 +837,8 @@ function sysCall_sensing()
             end
         end
     end
-end</pre><h3>gitlab</h3>
+end</pre>
+<h3>gitlab</h3>
 <div id="tipue_search_content">
 <h4>Gitlab 同步</h4>
 <p>要利用 Gitlab 同步位於 Github 上的 CMSiMDE 倉儲與 Github Pages 網頁, 需要注意以下兩個要點:</p>
@@ -745,7 +870,8 @@ end</pre><h3>gitlab</h3>
 </table>
 </div>
 </div>
-</div><h2>W15</h2>
+</div>
+<h2>W15</h2>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/IKOGwoJ2HLk" title="YouTube video player" width="560"></iframe></p>
 <p></p>
 <p>We saw this simple two-link robot in the previous lecture about forward kinematics.</p>
@@ -1045,7 +1171,8 @@ end
 <h4>5. Python remote API 逆向運動學函式</h4>
 <p><a href="https://drive.google.com/drive/folders/19nMfUZuylDWTWaF0m9h8cGnRWcHOuIR7?usp=sharing">MTB_remote_API</a></p>
 <p>操作與講解:</p>
-<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/CRr-5ssBEM4" title="YouTube video player" width="560"></iframe></p><h1>Note</h1>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/CRr-5ssBEM4" title="YouTube video player" width="560"></iframe></p>
+<h1>Note</h1>
 <h2>Upgrade pip</h2>
 <p>Install plugins(in cmd):</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">pip install flask flask_cors bs4 markdown pelican leo
@@ -1098,5 +1225,5 @@ leo
 <h1>Code</h1>
 <p>github .stl 3D viewer</p>
 <p><span style="color: #999999;">&lt;script src="https://embed.github.com/view/3d/檔案位置"&gt;&lt;/script&gt;</span></p>
-<h1>FreeCAD test</h1>
+<h1>FreeCAD protable</h1>
 <p><a href="https://drive.google.com/drive/folders/1bjRzWbERGyRVyARg-0VjK5gV_S8wS1Fu?usp=sharing">FreeCAD可攜版</a></p>
